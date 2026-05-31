@@ -1615,6 +1615,11 @@
 
           <div id="form-status" class="form-status" hidden aria-live="polite"></div>
 
+          <!-- Honeypot anti-spam protection field (invisible to humans) -->
+          <div style="display:none !important;" aria-hidden="true">
+            <input id="c-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+
           <div class="form-row">
             <div class="form-group">
               <label for="c-name">Your Name <span class="req" aria-hidden="true">*</span></label>
@@ -1780,8 +1785,8 @@
   </button>
 
   <!-- Scripts -->
-  <script src="js/bg.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/bg.js?v=6.7"></script>
+  <script src="js/main.js?v=6.7"></script>
 
 </body>
 </html>

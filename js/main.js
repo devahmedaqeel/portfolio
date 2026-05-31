@@ -371,28 +371,57 @@
         const service = ($("#c-service", contactForm)?.value || "").trim();
         const budget  = ($("#c-budget",  contactForm)?.value || "").trim();
         const message = ($("#c-msg",   contactForm)?.value || "").trim();
+        const website = ($("#c-website", contactForm)?.value || "").trim();
 
-        // 1. Try secure Vercel Serverless SMTP API
+        // 1. Spambot Preemption
+        if (website !== "") {
+          showSuccessModal();
+          contactForm.reset();
+          if (btn) {
+            btn.disabled = false;
+            btn.textContent = "Send Message →";
+          }
+          return;
+        }
+
+        let validationOrRateLimitError = null;
+
+        // 2. Try secure Vercel Serverless SMTP API
         try {
           const res = await fetch('/api/submit-contact', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name, email, phone, service, budget, message })
+            body: JSON.stringify({ name, email, phone, service, budget, message, website })
           });
 
+          const json = await res.json().catch(() => ({}));
           if (res.ok) {
-            const json = await res.json();
             if (json && json.success) {
               sentSuccessfully = true;
+            }
+          } else {
+            // Check if it's an explicit validation or rate-limiting error (400 or 429)
+            if (res.status === 400 || res.status === 429) {
+              validationOrRateLimitError = json.message || "Security check failed. Please try again later.";
             }
           }
         } catch (apiErr) {
           console.warn("Vercel Serverless API failed/unreachable. Attempting FormSubmit fallback...", apiErr);
         }
 
-        // 2. Fallback to free public FormSubmit.co API if Vercel serverless is offline (e.g. during local testing)
+        // If it was an explicit security or client error rejection, do NOT attempt fallback
+        if (validationOrRateLimitError) {
+          setStatus("error", validationOrRateLimitError);
+          if (btn) {
+            btn.disabled = false;
+            btn.textContent = "Send Message →";
+          }
+          return;
+        }
+
+        // 3. Fallback to free public FormSubmit.co API if Vercel serverless is offline (e.g. during local testing)
         if (!sentSuccessfully) {
           const fallbackRes = await fetch('https://formsubmit.co/ajax/engrahmedaqeel14@gmail.com', {
             method: 'POST',

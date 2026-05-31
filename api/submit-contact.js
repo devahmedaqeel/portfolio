@@ -12,7 +12,53 @@ function escapeHtml(unsafe) {
     .replace(/'/g, "&#039;");
 }
 
+// Zero-dependency sliding window rate limiter
+const rateLimitMap = new Map();
+
+function isRateLimited(ip) {
+  const now = Date.now();
+  const limitWindow = 10 * 60 * 1000; // 10 minutes
+  const maxRequests = 5;
+
+  if (!rateLimitMap.has(ip)) {
+    rateLimitMap.set(ip, []);
+  }
+
+  const requests = rateLimitMap.get(ip).filter(timestamp => now - timestamp < limitWindow);
+  requests.push(now);
+  rateLimitMap.set(ip, requests);
+
+  // Periodic cleanup to avoid memory leak
+  for (const [key, value] of rateLimitMap.entries()) {
+    const activeRequests = value.filter(timestamp => now - timestamp < limitWindow);
+    if (activeRequests.length === 0) {
+      rateLimitMap.delete(key);
+    } else {
+      rateLimitMap.set(key, activeRequests);
+    }
+  }
+
+  return requests.length > maxRequests;
+}
+
+function getClientIp(req) {
+  const forwarded = req.headers['x-forwarded-for'];
+  if (forwarded) {
+    return forwarded.split(',')[0].trim();
+  }
+  return req.headers['x-real-ip'] || 
+         req.connection?.remoteAddress || 
+         req.socket?.remoteAddress || 
+         'unknown';
+}
+
 module.exports = async function handler(req, res) {
+  // Set security headers
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+
   if (req.method !== 'POST') {
     return res.status(405).json({
       success: false,
@@ -21,13 +67,57 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const { name, email, phone, service, budget, message } = req.body;
+    const { name, email, phone, service, budget, message, website } = req.body;
+
+    // 1. Silent Bot Honeypot Interception
+    if (website && website.trim() !== '') {
+      // Return a fake success status to trick spambots into thinking their submit worked
+      return res.status(200).json({
+        success: true,
+        message: 'Message sent successfully'
+      });
+    }
+
+    // 2. Client IP Rate Limiting
+    const ip = getClientIp(req);
+    if (isRateLimited(ip)) {
+      return res.status(429).json({
+        success: false,
+        message: 'Too many submissions. Please wait a few minutes and try again.'
+      });
+    }
 
     if (!name || !email || !message) {
       return res.status(400).json({
         success: false,
         message: 'Name, email, and message are required'
       });
+    }
+
+    // 3. Strict Size Bounds Checks to prevent massive payload spamming
+    if (name.length > 100) {
+      return res.status(400).json({ success: false, message: 'Name is too long (maximum 100 characters)' });
+    }
+    if (email.length > 120) {
+      return res.status(400).json({ success: false, message: 'Email is too long (maximum 120 characters)' });
+    }
+    if (phone && phone.length > 30) {
+      return res.status(400).json({ success: false, message: 'Phone is too long (maximum 30 characters)' });
+    }
+    if (service && service.length > 50) {
+      return res.status(400).json({ success: false, message: 'Service selection is invalid or too long' });
+    }
+    if (budget && budget.length > 100) {
+      return res.status(400).json({ success: false, message: 'Budget field is too long (maximum 100 characters)' });
+    }
+    if (message.length > 4000) {
+      return res.status(400).json({ success: false, message: 'Message is too long (maximum 4000 characters)' });
+    }
+
+    // 4. Rigid Backend Email Format Validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ success: false, message: 'Invalid email address format' });
     }
 
     // Sanitize user inputs to prevent any HTML/script injection
