@@ -1,8 +1,2 @@
 {
-  "version": 2,
-  "functions": {
-    "api/submit-contact.js": {
-      "runtime": "nodejs20.x"
-    }
-  }
 }
