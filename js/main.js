@@ -362,6 +362,8 @@
       const btn = $("[type='submit']", contactForm);
       if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
 
+      let sentSuccessfully = false;
+
       try {
         const name    = ($("#c-name",  contactForm)?.value || "").trim();
         const email   = (emailEl?.value || "").trim();
@@ -370,29 +372,62 @@
         const budget  = ($("#c-budget",  contactForm)?.value || "").trim();
         const message = ($("#c-msg",   contactForm)?.value || "").trim();
 
-        const res = await fetch('/api/submit-contact', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            phone,
-            service,
-            budget,
-            message
-          })
-        });
+        // 1. Try secure Vercel Serverless SMTP API
+        try {
+          const res = await fetch('/api/submit-contact', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, email, phone, service, budget, message })
+          });
 
-        const json = await res.json();
-        if (!res.ok || !json.success) throw new Error("failed");
+          if (res.ok) {
+            const json = await res.json();
+            if (json && json.success) {
+              sentSuccessfully = true;
+            }
+          }
+        } catch (apiErr) {
+          console.warn("Vercel Serverless API failed/unreachable. Attempting FormSubmit fallback...", apiErr);
+        }
 
-        showSuccessModal();
-        contactForm.reset();
+        // 2. Fallback to free public FormSubmit.co API if Vercel serverless is offline (e.g. during local testing)
+        if (!sentSuccessfully) {
+          const fallbackRes = await fetch('https://formsubmit.co/ajax/engrahmedaqeel14@gmail.com', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+              name,
+              email,
+              phone,
+              service,
+              budget,
+              message,
+              _subject: 'Ahmed Aqeel Portfolio Form - Direct Submission'
+            })
+          });
+
+          if (fallbackRes.ok) {
+            const fallbackJson = await fallbackRes.json();
+            if (fallbackJson && (fallbackJson.success === "true" || fallbackJson.success === true)) {
+              sentSuccessfully = true;
+            }
+          }
+        }
+
+        if (sentSuccessfully) {
+          showSuccessModal();
+          contactForm.reset();
+        } else {
+          throw new Error("All endpoints failed");
+        }
 
       } catch (err) {
-        setStatus("error", "Failed to send message. Please try again.");
+        setStatus("error", "Failed to send message. Please try again or email engrahmedaqeel14@gmail.com directly.");
       } finally {
         if (btn) {
           btn.disabled = false;
