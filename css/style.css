@@ -284,24 +284,38 @@ nav.scrolled {
 }
 
 .hero-roles {
-  display: flex; flex-wrap: wrap; gap: 8px;
+  display: flex; flex-wrap: wrap; gap: 6px 0px;
   margin-bottom: 20px;
 }
 .role-pill {
-  font-family: var(--font-mono); font-size: 10.5px;
-  color: var(--text3); letter-spacing: 1.2px;
-  background: rgba(255,255,255,0.03); border: 1px solid var(--border2);
-  padding: 6px 15px; border-radius: 100px;
-  transition: color 0.3s, border-color 0.3s, background 0.3s;
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--text3); letter-spacing: 0.8px;
+  background: transparent !important; border: none !important;
+  box-shadow: none !important;
+  padding: 4px 6px; border-radius: 0;
+  transition: color 0.3s, text-shadow 0.3s;
+  display: inline-flex;
+  align-items: center;
 }
 .role-pill:hover {
-  color: var(--text2); border-color: rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.05);
+  color: var(--text);
 }
 .role-pill.active {
-  color: var(--accent); background: var(--accent-dim);
-  border-color: rgba(0,229,196,0.3);
-  font-weight: 500;
+  color: var(--accent) !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(0, 229, 196, 0.8), 0 0 20px rgba(0, 229, 196, 0.4);
+}
+.role-pill:not(:last-child)::after {
+  content: '·';
+  margin-left: 10px;
+  margin-right: 4px;
+  color: var(--text3);
+  opacity: 0.5;
+  font-weight: normal;
+  text-shadow: none;
 }
 
 .typing-box {
@@ -2540,10 +2554,13 @@ nav.scrolled {
   /* Hide fancy cursor, restore auto cursor for touch */
   #cursor, #cursor-ring { display: none !important; }
   body, button, a, input, select, textarea { cursor: auto !important; }
-  .fc-top::before, .fc-top::after,
-  .fc-bottom::before, .fc-bottom::after,
-  .fc-mid::before, .fc-mid::after {
-    display: none !important;
+  /* Hide connector lines on tablet range to prevent overflow */
+  @media (min-width: 769px) {
+    .fc-top::before, .fc-top::after,
+    .fc-bottom::before, .fc-bottom::after,
+    .fc-mid::before, .fc-mid::after {
+      display: none !important;
+    }
   }
 
   :root { --section-pad: 50px 48px; }
@@ -2719,11 +2736,12 @@ nav.scrolled {
   
   /* Fix Avatar visibility explicitly */
   .avatar-wrap { 
-    max-width: 220px; 
+    max-width: 190px !important; 
     width: 100%; 
     height: auto !important; 
     aspect-ratio: 3 / 4 !important; 
     position: relative;
+    margin: 0 auto;
   }
   .avatar-card {
     position: absolute;
@@ -2742,11 +2760,69 @@ nav.scrolled {
   
   .avatar-emoji { font-size: 72px; }
   
-  /* Scale chips down to fit like laptop but smaller */
-  .fc-top    { top: 16px; left: -20px; right: auto; transform: scale(0.6); transform-origin: top left; }
-  .fc-bottom { bottom: 16px; left: -20px; right: auto; transform: scale(0.6); transform-origin: bottom left; }
-  .fc-mid    { top: 50%; right: -30px; left: auto; transform: translateY(-50%) scale(0.6); transform-origin: right center; display: flex !important; }
-  .avatar-card::before, .avatar-card::after { width: 30px; height: 30px; }
+  /* Enable dotted connector lines and anchor dots on mobile */
+  .fc-top::before, .fc-top::after,
+  .fc-bottom::before, .fc-bottom::after,
+  .fc-mid::before, .fc-mid::after {
+    display: block !important;
+  }
+  
+  /* Scale chips and position them perfectly beside the avatar wrap */
+  .fc-top {
+    top: 15% !important;
+    left: -22px !important;
+    right: auto !important;
+    transform: scale(0.55) !important;
+    transform-origin: right center !important;
+    animation: sysFloatTop 5s ease-in-out infinite !important;
+  }
+  .fc-bottom {
+    bottom: 15% !important;
+    left: -22px !important;
+    right: auto !important;
+    transform: scale(0.55) !important;
+    transform-origin: right center !important;
+    animation: sysFloatBottom 6s ease-in-out infinite !important;
+  }
+  .fc-mid {
+    top: 50% !important;
+    right: -22px !important;
+    left: auto !important;
+    transform: translateY(-50%) scale(0.55) !important;
+    transform-origin: left center !important;
+    animation: sysFloatMid 5.5s ease-in-out infinite !important;
+    display: flex !important;
+  }
+  .avatar-card::before, .avatar-card::after { width: 20px !important; height: 20px !important; }
+
+  /* Hide the interactive typing/coding box on mobile and tablet */
+  .typing-box {
+    display: none !important;
+  }
+  
+  /* Center specialty text tags on mobile/tablet */
+  .hero-roles {
+    order: 4;
+    justify-content: center !important;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  /* Polish hero bio and actions spacing */
+  .hero-bio {
+    font-size: 14px !important;
+    line-height: 1.72 !important;
+    margin: 0 auto 20px !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    color: var(--text2) !important;
+  }
+  
+  .hero-actions {
+    margin-top: 12px !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
 
   /* Stats bar — 3-col grid + full-width marquee row */
   .stats-bar {
@@ -2812,12 +2888,30 @@ nav.scrolled {
   }
   
   .avatar-wrap { 
-    max-width: 180px; 
+    max-width: 165px !important; 
   }
-  .hero-visual { height: 280px; }
-  .fc-top    { top: 12px; left: -15px; right: auto; transform: scale(0.5); transform-origin: top left; }
-  .fc-bottom { bottom: 12px; left: -15px; right: auto; transform: scale(0.5); transform-origin: bottom left; }
-  .fc-mid    { top: 50%; right: -20px; left: auto; transform: translateY(-50%) scale(0.5); transform-origin: right center; display: flex !important; }
+  .hero-visual { height: 260px !important; }
+  .fc-top {
+    top: 15% !important;
+    left: -22px !important;
+    right: auto !important;
+    transform: scale(0.48) !important;
+    transform-origin: right center !important;
+  }
+  .fc-bottom {
+    bottom: 15% !important;
+    left: -22px !important;
+    right: auto !important;
+    transform: scale(0.48) !important;
+    transform-origin: right center !important;
+  }
+  .fc-mid {
+    top: 50% !important;
+    right: -22px !important;
+    left: auto !important;
+    transform: translateY(-50%) scale(0.48) !important;
+    transform-origin: left center !important;
+  }
 }
 
 /* ================================================================
@@ -3597,7 +3691,7 @@ nav::after {
 
 /* ── 29. ROLE PILLS: better hover glow ──────────────────────── */
 .role-pill.active {
-  box-shadow: 0 0 16px rgba(0,229,196,0.12);
+  box-shadow: none !important;
 }
 
 /* ── 30. CARD SKILL ICON GLOW: original icons ───────────────── */
@@ -3879,8 +3973,8 @@ strong, b { font-weight: 700; }
   white-space: nowrap;
 }
 
-/* Connector dots and lines: always hidden on ≤1100px to prevent overflow */
-@media (max-width: 1200px) {
+/* Connector dots and lines: hidden on tablet range to prevent overflow, but enabled on mobile under tighter scaling */
+@media (max-width: 1200px) and (min-width: 769px) {
   .fc-top::before, .fc-top::after,
   .fc-bottom::before, .fc-bottom::after,
   .fc-mid::before, .fc-mid::after {
