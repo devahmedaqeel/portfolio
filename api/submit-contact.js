@@ -164,83 +164,94 @@ ${message}
 ==================================================
 Sent from Ahmed Aqeel Portfolio Website - © Ahmed Aqeel`,
 
-      // Premium Dark Futuristic DevOrbitTech Email Template
+      // Premium Dark Futuristic Email Template (Robust Vertical Cards)
       html: `
-        <div style="font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; padding: 32px 12px; background-color: #070b16; color: #f3f4f6; min-height: 100%;">
-          <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 650px; margin: 0 auto; background-color: #0f172a; border-radius: 18px; border: 1px solid rgba(0, 245, 255, 0.25); box-shadow: 0 10px 30px rgba(0, 245, 255, 0.15); overflow: hidden; border-collapse: collapse;">
+        <div style="font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; padding: 24px 12px; background-color: #070b16; color: #f3f4f6;">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; margin: 0 auto; background-color: #0f172a; border-radius: 16px; border: 1px solid #1e293b; overflow: hidden; border-collapse: collapse; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);">
             
             <!-- Header Banner Section -->
             <tr>
-              <td style="padding: 28px 28px 20px 28px; border-bottom: 2px solid rgba(0, 245, 255, 0.15); background-color: #0f172a;">
+              <td style="padding: 24px 24px 20px 24px; border-bottom: 2px solid #1e293b; background-color: #0f172a;">
                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                   <tr>
-                    <td style="color: #00f5ff; font-size: 22px; font-weight: 800; letter-spacing: 0.5px; font-family: 'Segoe UI', sans-serif;">
+                    <td style="color: #00f5ff; font-size: 20px; font-weight: 800; letter-spacing: 0.5px;">
                       Ahmed Aqeel
                     </td>
                     <td align="right">
-                      <span style="display: inline-block; padding: 4px 10px; background-color: rgba(0, 245, 255, 0.1); border: 1px solid rgba(0, 245, 255, 0.3); border-radius: 20px; font-size: 11px; font-weight: bold; color: #00f5ff; text-transform: uppercase; letter-spacing: 1px;">
-                        <span style="display: inline-block; width: 6px; height: 6px; background-color: #00f5ff; border-radius: 50%; margin-right: 6px; vertical-align: middle;"></span>
+                      <span style="display: inline-block; padding: 4px 12px; background-color: #1e293b; border: 1px solid #00f5ff; border-radius: 20px; font-size: 11px; font-weight: bold; color: #00f5ff; text-transform: uppercase; letter-spacing: 1px;">
                         Portfolio Form
                       </span>
                     </td>
                   </tr>
                 </table>
-                <h1 style="margin: 16px 0 0 0; color: #ffffff; font-size: 24px; font-weight: 800; letter-spacing: -0.5px;">New Contact Message</h1>
+                <h1 style="margin: 16px 0 0 0; color: #ffffff; font-size: 22px; font-weight: 800; letter-spacing: -0.5px;">New Contact Message</h1>
                 <p style="margin: 4px 0 0 0; font-size: 13.5px; color: #9ca3af; font-weight: 500;">A new client/contact submitted your portfolio form.</p>
               </td>
             </tr>
 
             <!-- Content Details Area -->
             <tr>
-              <td style="padding: 28px 28px 12px 28px; background-color: #0f172a;">
+              <td style="padding: 24px; background-color: #0f172a;">
                 
-                <!-- Info Cards Table (Professional Boxes) -->
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 16px;">
+                <!-- Info Cards (Vertical Stack for perfect mobile scaling & balanced heights) -->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 20px;">
                   
-                  <!-- Row 1: Name & Email -->
+                  <!-- Card 1: Sender Name -->
                   <tr>
-                    <td style="padding-bottom: 12px; width: 50%;">
-                      <div style="background-color: #1a2035; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.05); padding: 12px 16px; margin-right: 6px;">
+                    <td style="padding-bottom: 12px;">
+                      <div style="background-color: #1a2035; border: 1px solid #334155; border-radius: 10px; padding: 14px 18px;">
                         <span style="font-size: 11px; font-weight: bold; color: #00f5ff; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px;">👤 Sender Name</span>
-                        <span style="font-size: 14px; font-weight: 600; color: #ffffff; display: block;">${safeName}</span>
+                        <span style="font-size: 15px; font-weight: 600; color: #ffffff; display: block;">${safeName}</span>
                       </div>
                     </td>
-                    <td style="padding-bottom: 12px; width: 50%;">
-                      <div style="background-color: #1a2035; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.05); padding: 12px 16px; margin-left: 6px;">
+                  </tr>
+
+                  <!-- Card 2: Email Address -->
+                  <tr>
+                    <td style="padding-bottom: 12px;">
+                      <div style="background-color: #1a2035; border: 1px solid #334155; border-radius: 10px; padding: 14px 18px;">
                         <span style="font-size: 11px; font-weight: bold; color: #00f5ff; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px;">✉️ Email Address</span>
-                        <a href="mailto:${safeEmail}" style="font-size: 14px; font-weight: 600; color: #00f5ff; text-decoration: none; display: block;">${safeEmail}</a>
+                        <a href="mailto:${safeEmail}" style="font-size: 15px; font-weight: 600; color: #00f5ff; text-decoration: none; display: block;">${safeEmail}</a>
                       </div>
                     </td>
                   </tr>
 
-                  <!-- Row 2: Phone & Service -->
+                  <!-- Card 3: Phone / WhatsApp -->
                   <tr>
                     <td style="padding-bottom: 12px;">
-                      <div style="background-color: #1a2035; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.05); padding: 12px 16px; margin-right: 6px;">
+                      <div style="background-color: #1a2035; border: 1px solid #334155; border-radius: 10px; padding: 14px 18px;">
                         <span style="font-size: 11px; font-weight: bold; color: #00f5ff; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px;">📞 Phone / WhatsApp</span>
-                        <span style="font-size: 14px; font-weight: 600; color: #ffffff; display: block;">${safePhone || 'Not provided'}</span>
-                      </div>
-                    </td>
-                    <td style="padding-bottom: 12px;">
-                      <div style="background-color: #1a2035; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.05); padding: 12px 16px; margin-left: 6px;">
-                        <span style="font-size: 11px; font-weight: bold; color: #00f5ff; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px;">⚙️ Requested Service</span>
-                        <span style="font-size: 14px; font-weight: 600; color: #ffffff; display: block; text-transform: capitalize;">${safeService || 'General / Other'}</span>
+                        <span style="font-size: 15px; font-weight: 600; color: #ffffff; display: block;">${safePhone || 'Not provided'}</span>
                       </div>
                     </td>
                   </tr>
 
-                  <!-- Row 3: Budget & Details -->
+                  <!-- Card 4: Requested Service -->
                   <tr>
                     <td style="padding-bottom: 12px;">
-                      <div style="background-color: #1a2035; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.05); padding: 12px 16px; margin-right: 6px;">
-                        <span style="font-size: 11px; font-weight: bold; color: #00f5ff; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px;">💰 Budget Range</span>
-                        <span style="font-size: 14px; font-weight: 700; color: #eab308; display: block;">💰 ${safeBudget || 'Not specified'}</span>
+                      <div style="background-color: #1a2035; border: 1px solid #334155; border-radius: 10px; padding: 14px 18px;">
+                        <span style="font-size: 11px; font-weight: bold; color: #00f5ff; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px;">⚙️ Requested Service</span>
+                        <span style="font-size: 15px; font-weight: 600; color: #ffffff; display: block; text-transform: capitalize;">${safeService || 'General / Other'}</span>
                       </div>
                     </td>
+                  </tr>
+
+                  <!-- Card 5: Budget Range -->
+                  <tr>
                     <td style="padding-bottom: 12px;">
-                      <div style="background-color: #1a2035; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.05); padding: 12px 16px; margin-left: 6px;">
+                      <div style="background-color: #1a2035; border: 1px solid #334155; border-radius: 10px; padding: 14px 18px;">
+                        <span style="font-size: 11px; font-weight: bold; color: #00f5ff; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px;">💰 Budget Range</span>
+                        <span style="font-size: 15px; font-weight: 700; color: #eab308; display: block;">💰 ${safeBudget || 'Not specified'}</span>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <!-- Card 6: Date & Time -->
+                  <tr>
+                    <td style="padding-bottom: 12px;">
+                      <div style="background-color: #1a2035; border: 1px solid #334155; border-radius: 10px; padding: 14px 18px;">
                         <span style="font-size: 11px; font-weight: bold; color: #00f5ff; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px;">🗓️ Date &amp; Time</span>
-                        <span style="font-size: 14px; font-weight: 600; color: #ffffff; display: block;">${dateTimeString}</span>
+                        <span style="font-size: 15px; font-weight: 600; color: #ffffff; display: block;">${dateTimeString}</span>
                       </div>
                     </td>
                   </tr>
@@ -251,8 +262,8 @@ Sent from Ahmed Aqeel Portfolio Website - © Ahmed Aqeel`,
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 24px;">
                   <tr>
                     <td>
-                      <h3 style="margin-top: 0; margin-bottom: 8px; color: #ffffff; font-size: 15px; font-weight: 700; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 6px;">Message</h3>
-                      <div style="background-color: #0b1220; border-left: 4px solid #00f5ff; padding: 16px; border-radius: 12px;">
+                      <h3 style="margin-top: 0; margin-bottom: 10px; color: #ffffff; font-size: 15px; font-weight: 700; padding-bottom: 4px;">Message</h3>
+                      <div style="background-color: #0b1220; border: 1px solid #334155; border-left: 4px solid #00f5ff; padding: 16px; border-radius: 8px;">
                         <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #e5e7eb; white-space: pre-wrap; font-family: inherit;">${formattedMessage}</p>
                       </div>
                     </td>
@@ -260,17 +271,17 @@ Sent from Ahmed Aqeel Portfolio Website - © Ahmed Aqeel`,
                 </table>
 
                 <!-- Reply Note Section -->
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 28px; background-color: rgba(0, 245, 255, 0.05); border: 1px solid rgba(0, 245, 255, 0.15); border-radius: 8px;">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 24px; background-color: #1a2035; border: 1px solid #334155; border-radius: 8px;">
                   <tr>
-                    <td style="padding: 12px; text-align: center; font-size: 12.5px; color: #00f5ff; font-weight: 600;">
+                    <td style="padding: 12px; text-align: center; font-size: 12px; color: #00f5ff; font-weight: 600;">
                       💡 You can reply directly to this email to contact the sender.
                     </td>
                   </tr>
                 </table>
 
                 <!-- Reply CTA button box -->
-                <div style="text-align: center; margin-bottom: 16px;">
-                  <a href="mailto:${safeEmail}" style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #00f5ff 0%, #3b82f6 100%); color: #070b16; text-decoration: none; font-size: 13px; font-weight: 800; border-radius: 30px; box-shadow: 0 4px 15px rgba(0, 245, 255, 0.35); text-transform: uppercase; letter-spacing: 1.5px; font-family: sans-serif;">
+                <div style="text-align: center; margin-bottom: 8px;">
+                  <a href="mailto:${safeEmail}" style="display: inline-block; padding: 12px 28px; background-color: #00f5ff; color: #070b16; text-decoration: none; font-size: 13px; font-weight: 800; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px;">
                     Reply to Sender
                   </a>
                 </div>
@@ -280,10 +291,8 @@ Sent from Ahmed Aqeel Portfolio Website - © Ahmed Aqeel`,
 
             <!-- Footer Section -->
             <tr>
-              <td style="padding: 24px; background-color: #070b16; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.03);">
-                <!-- Website/brand style footer line -->
-                <div style="height: 2px; width: 60px; background: linear-gradient(90deg, #00f5ff, #3b82f6); margin: 0 auto 16px auto; border-radius: 1px;"></div>
-                <p style="margin: 0 0 6px 0; font-size: 11.5px; color: #9ca3af; font-weight: 500;">Sent from Ahmed Aqeel Portfolio Website</p>
+              <td style="padding: 20px; background-color: #070b16; text-align: center; border-top: 1px solid #1e293b;">
+                <p style="margin: 0 0 6px 0; font-size: 11px; color: #9ca3af; font-weight: 500;">Sent from Ahmed Aqeel Portfolio Website</p>
                 <p style="margin: 0; font-size: 11px; color: #4b5563; font-weight: 600; letter-spacing: 0.5px;">© Ahmed Aqeel</p>
               </td>
             </tr>
