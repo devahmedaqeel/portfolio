@@ -140,3 +140,20 @@ To allow Nodemailer to relay emails securely through Google's SMTP servers, you 
 ## 📝 License
 
 This project is open-source and available under the [MIT License](LICENSE). Feel free to customize and adapt it for your personal brand!
+PS C:\Users\user\Downloads\portfolio_pro>
+PS C:\Users\user\Downloads\portfolio_pro> cd "c:\Users\user\Downloads\portfolio_pro\portfolio-pro"
+>> 
+PS C:\Users\user\Downloads\portfolio_pro\portfolio-pro> git init
+>> 
+git : The term 'git' is not recognized as the name of a cmdlet, 
+function, script file, or operable program. Check the spelling 
+of the name, or if a path was included, verify that the path is 
+correct and try again.
+At line:1 char:1
++ git init
++ ~~~
+    + CategoryInfo          : ObjectNotFound: (git:String) [], C 
+   ommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+PS C:\Users\user\Downloads\portfolio_pro\portfolio-pro> 

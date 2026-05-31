@@ -107,7 +107,7 @@
   });
 
   /* ──────────────────────────────────────────────────────────
-     NAV: scroll state + active links
+     NAV: scroll state + active links (optimized with IntersectionObserver)
   ────────────────────────────────────────────────────────── */
   const nav      = $("nav");
   const navLinks = $$(".nav-links a");
@@ -122,17 +122,27 @@
     } else {
       nav.classList.remove("scrolled");
     }
-    nav.style.top = "0px";
-
-    /* Active link highlight */
-    let current = "";
-    sections.forEach((s) => {
-      if (window.scrollY >= s.offsetTop - 150) current = s.id;
-    });
-    navLinks.forEach((a) => {
-      a.classList.toggle("active-link", a.getAttribute("href") === "#" + current);
-    });
   }, { passive: true });
+
+  // High-performance asynchronous active navigation section observer
+  if (sections.length && navLinks.length) {
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+          navLinks.forEach((a) => {
+            a.classList.toggle("active-link", a.getAttribute("href") === "#" + id);
+          });
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: "-25% 0px -55% 0px", // Focus in the middle area of the viewport
+      threshold: 0
+    });
+
+    sections.forEach((s) => navObserver.observe(s));
+  }
 
   /* ──────────────────────────────────────────────────────────
      SMOOTH SCROLL for anchor links
@@ -480,32 +490,40 @@
   }
 
   /* ──────────────────────────────────────────────────────────
-     3-D TILT + SPOTLIGHT  (mouse devices only)
+     3-D TILT + SPOTLIGHT  (mouse devices only - optimized rect caching)
   ────────────────────────────────────────────────────────── */
   if (hasMouse && !prefersReduced) {
     $$(".project-card, .skill-card, .service-card").forEach((card) => {
+      let r = null;
+      card.addEventListener("mouseenter", () => {
+        r = card.getBoundingClientRect();
+      });
       card.addEventListener("mousemove", (e) => {
-        const r = card.getBoundingClientRect();
+        if (!r) r = card.getBoundingClientRect();
         const x = ((e.clientX - r.left) / r.width  - 0.5) * 8;
         const y = ((e.clientY - r.top)  / r.height - 0.5) * 8;
         card.style.transform = `translateY(-6px) rotateX(${-y}deg) rotateY(${x}deg)`;
         card.style.setProperty("--mouse-x", (e.clientX - r.left) + "px");
         card.style.setProperty("--mouse-y", (e.clientY - r.top)  + "px");
       }, { passive: true });
-      card.addEventListener("mouseleave", () => { card.style.transform = ""; });
+      card.addEventListener("mouseleave", () => { card.style.transform = ""; r = null; });
     });
   }
 
   /* ──────────────────────────────────────────────────────────
-     HERO PARALLAX  (mouse devices only)
+     HERO PARALLAX  (mouse devices only - optimized rect caching)
   ────────────────────────────────────────────────────────── */
   const heroVisual = $(".hero-visual");
   const avatarWrap = $(".avatar-wrap");
   const floatChips = $$(".float-chip");
 
   if (heroVisual && avatarWrap && hasMouse && !prefersReduced) {
+    let r = null;
+    heroVisual.addEventListener("mouseenter", () => {
+      r = heroVisual.getBoundingClientRect();
+    });
     heroVisual.addEventListener("mousemove", (e) => {
-      const r = heroVisual.getBoundingClientRect();
+      if (!r) r = heroVisual.getBoundingClientRect();
       const x = (e.clientX - r.left) - r.width  / 2;
       const y = (e.clientY - r.top)  - r.height / 2;
       avatarWrap.style.transform = `translate(${x * 0.032}px, ${y * 0.032}px)`;
@@ -517,6 +535,7 @@
     heroVisual.addEventListener("mouseleave", () => {
       avatarWrap.style.transform = "";
       floatChips.forEach((c) => { c.style.transform = ""; });
+      r = null;
     });
   }
 
