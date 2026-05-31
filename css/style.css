@@ -1156,6 +1156,16 @@ nav.scrolled {
   opacity: 1 !important;
 }
 
+.filter-deepseek, .m-logo.filter-deepseek {
+  filter: invert(40%) sepia(90%) saturate(2000%) hue-rotate(180deg) brightness(100%) contrast(100%) drop-shadow(0 0 12px #00b4d8) !important;
+  opacity: 1 !important;
+}
+
+.filter-mistral, .m-logo.filter-mistral {
+  filter: invert(52%) sepia(95%) saturate(2000%) hue-rotate(10deg) brightness(105%) contrast(100%) drop-shadow(0 0 12px #ff7a00) !important;
+  opacity: 1 !important;
+}
+
 @keyframes pulseCyan {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.4; transform: scale(1.3); }
