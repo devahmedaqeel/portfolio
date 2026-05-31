@@ -119,11 +119,10 @@
     /* Sticky style */
     if (window.scrollY > 10) {
       nav.classList.add("scrolled");
-      nav.style.top = "var(--status-bar-h, 0px)";
     } else {
       nav.classList.remove("scrolled");
-      nav.style.top = "var(--status-bar-h, 30px)";
     }
+    nav.style.top = "0px";
 
     /* Active link highlight */
     let current = "";
@@ -516,73 +515,6 @@
     scrollTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
-  }
-
-  /* ──────────────────────────────────────────────────────────
-     STATUS BAR — live time + ping
-  ────────────────────────────────────────────────────────── */
-  const pingEl = $("#sys-ping");
-  const timeEl = $("#sys-time");
-
-  function updateStatus() {
-    if (document.hidden) return;
-    if (pingEl && Math.random() > 0.88)
-      pingEl.textContent = `LATENCY: ${Math.floor(18 + Math.random() * 20)}ms`;
-  }
-  setInterval(updateStatus, 1000);
-  updateStatus();
-
-  // Dynamic Global Network Hubs
-  if (timeEl) {
-    const globalNodes = [
-      { city: "KOTLI", country: "PK", label: "HQ SOURCE" },
-      { city: "NEW YORK", country: "US", label: "ACTIVE" },
-      { city: "LONDON", country: "UK", label: "STABLE" },
-      { city: "TOKYO", country: "JP", label: "ONLINE" },
-      { city: "FRANKFURT", country: "DE", label: "ROUTING" },
-      { city: "SINGAPORE", country: "SG", label: "CONNECTED" }
-    ];
-
-    let nodeIndex = 0;
-    const nodeTextEl = timeEl.querySelector(".sys-node-text");
-
-    function cycleNetworkNodes() {
-      if (document.hidden) return;
-      
-      const node = globalNodes[nodeIndex];
-      nodeIndex = (nodeIndex + 1) % globalNodes.length;
-      
-      if (nodeTextEl) {
-        nodeTextEl.style.opacity = "0.2";
-        
-        setTimeout(() => {
-          if (window.innerWidth < 480) {
-            nodeTextEl.textContent = `NODE: ${node.city.substring(0, 3)} [${node.country}]`;
-          } else {
-            nodeTextEl.textContent = `PORTAL: ${node.city} [${node.country}] // ${node.label}`;
-          }
-          nodeTextEl.style.opacity = "1";
-        }, 200);
-      }
-    }
-
-    setInterval(cycleNetworkNodes, 3500);
-    cycleNetworkNodes();
-  }
-
-  /* ──────────────────────────────────────────────────────────
-     DYNAMIC TOP BAR ALIGNMENT
-  ────────────────────────────────────────────────────────── */
-  const statusBar = $(".system-status-bar");
-  if (statusBar) {
-    const ro = new ResizeObserver((entries) => {
-      for (let entry of entries) {
-        document.documentElement.style.setProperty('--status-bar-h', `${entry.contentRect.height}px`);
-      }
-    });
-    ro.observe(statusBar);
-    // Initial set
-    document.documentElement.style.setProperty('--status-bar-h', `${statusBar.getBoundingClientRect().height}px`);
   }
 
   /* ──────────────────────────────────────────────────────────
