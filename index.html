@@ -40,32 +40,55 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Ahmed Aqeel",
-    "alternateName": "DevAhmedAqeel",
-    "jobTitle": "AI-Powered Full Stack Developer",
-    "description": "Professional Full Stack & AI Developer specializing in React Native, Node.js, and automated systems.",
-    "url": "https://ahmedaqeel.dev/",
-    "image": "https://ahmedaqeel.dev/my-pic.jpg",
-    "email": "engrahmedaqeel14@gmail.com",
-    "telephone": "+923161893004",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Kotli",
-      "addressRegion": "Azad Kashmir",
-      "addressCountry": "PK"
-    },
-    "sameAs": [
-      "https://github.com/devahmedaqeel",
-      "https://www.linkedin.com/in/ahmed-aqeel-2a0090271/",
-      "https://wa.me/923161893004",
-      "https://www.facebook.com/share/1LEsJzr6Bi/?mibextid=wwXIfr",
-      "https://www.instagram.com/a.aqeel14?utm_source=qr"
-    ],
-    "knowsAbout": [
-      "React Native", "Flutter", "Node.js", "Firebase",
-      "Supabase", "n8n Automation", "AI Development",
-      "Web Development", "Mobile App Development", "Search Engine Optimization"
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://ahmedaqeel.dev/#person",
+        "name": "Ahmed Aqeel",
+        "alternateName": "DevAhmedAqeel",
+        "jobTitle": "AI-Powered Full Stack Developer & Mobile App Specialist",
+        "description": "Ahmed Aqeel is an expert software engineer and full-stack developer specializing in React Native, Flutter, Node.js, and automated n8n workflows.",
+        "url": "https://ahmedaqeel.dev/",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://ahmedaqeel.dev/ahmed-aqeel.jpg",
+          "caption": "Ahmed Aqeel - AI Full Stack Developer & Mobile Expert"
+        },
+        "email": "engrahmedaqeel14@gmail.com",
+        "telephone": "+923161893004",
+        "nationality": {
+          "@type": "Country",
+          "name": "Pakistan"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kotli",
+          "addressRegion": "Azad Kashmir",
+          "addressCountry": "PK"
+        },
+        "sameAs": [
+          "https://github.com/devahmedaqeel",
+          "https://www.linkedin.com/in/ahmed-aqeel-2a0090271/",
+          "https://wa.me/923161893004",
+          "https://www.facebook.com/share/1LEsJzr6Bi/?mibextid=wwXIfr",
+          "https://www.instagram.com/a.aqeel14?utm_source=qr"
+        ],
+        "knowsAbout": [
+          "React Native", "Flutter", "Node.js", "Firebase",
+          "Supabase", "n8n Automation", "AI Agent Development",
+          "Python Web Scraping", "Technical SEO", "Video Editing"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://ahmedaqeel.dev/#website",
+        "url": "https://ahmedaqeel.dev/",
+        "name": "Ahmed Aqeel | Professional Developer Portfolio",
+        "description": "Explore the official developer portfolio of Ahmed Aqeel. Hiring top-tier React Native, Flutter, and AI Automation services.",
+        "publisher": {
+          "@id": "https://ahmedaqeel.dev/#person"
+        }
+      }
     ]
   }
   </script>
@@ -148,14 +171,14 @@
         <span class="hero-tag-text">Available for Freelance Work</span>
       </div>
 
-      <p class="hero-greeting">
+      <h1 class="hero-greeting">
         // Hi, I'm <span class="highlight">Ahmed Aqeel</span> — building with AI, code &amp; creativity.
-      </p>
+      </h1>
 
-      <h1 class="hero-name">
+      <div class="hero-name">
         <span class="line-white">AI Full Stack</span>
         <span class="line-grad">Developer.</span>
-      </h1>
+      </div>
 
       <div class="hero-roles" aria-label="Specializations">
         <span class="role-pill active">React Native &amp; Flutter</span>
@@ -221,7 +244,7 @@
         <div class="avatar-glow-bg"></div>
         <div class="avatar-card">
           <!-- PHOTO SPACE -->
-          <img src="my-pic.jpg" alt="Ahmed Aqeel" class="avatar-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+          <img src="ahmed-aqeel.jpg" alt="Ahmed Aqeel - AI Full Stack Developer &amp; Mobile App Expert" title="Ahmed Aqeel | AI &amp; Mobile Developer" class="avatar-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
           <span class="avatar-emoji" style="display:none;">👨‍💻</span>
         </div>
 
