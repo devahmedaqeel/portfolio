@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ahmedaqeel.dev/sitemap.xml
+Sitemap: https://ahmedaqeelportfolio.vercel.app/sitemap.xml
