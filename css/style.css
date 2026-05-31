@@ -2634,11 +2634,6 @@ nav.scrolled {
    RESPONSIVE — MOBILE  ≤ 768px
    ================================================================ */
 @media (max-width: 768px) {
-  /* Hide chip connector lines */
-  .fc-top::after, .fc-top::before,
-  .fc-bottom::after, .fc-bottom::before,
-  .fc-mid::after, .fc-mid::before { display: none !important; }
-
   :root { --section-pad: 40px 24px; }
 
   /* Nav */
@@ -2748,9 +2743,9 @@ nav.scrolled {
   .avatar-emoji { font-size: 72px; }
   
   /* Scale chips down to fit like laptop but smaller */
-  .fc-top    { top: 12px;  left: -40px; transform: scale(0.65); transform-origin: top left; }
-  .fc-bottom { bottom: 12px; left: auto; right: -40px; transform: scale(0.65); transform-origin: bottom right; }
-  .fc-mid    { display: none !important; }
+  .fc-top    { top: 16px;  left: -20px; transform: scale(0.6); transform-origin: top left; }
+  .fc-bottom { bottom: 16px; left: auto; right: -20px; transform: scale(0.6); transform-origin: bottom right; }
+  .fc-mid    { top: 50%; right: -30px; left: auto; transform: translateY(-50%) scale(0.6); transform-origin: right center; display: flex !important; }
   .avatar-card::before, .avatar-card::after { width: 30px; height: 30px; }
 
   /* Stats bar — 3-col grid + full-width marquee row */
@@ -2820,8 +2815,9 @@ nav.scrolled {
     max-width: 180px; 
   }
   .hero-visual { height: 280px; }
-  .fc-top    { top: 8px; left: -25px; transform: scale(0.55); transform-origin: top left; }
-  .fc-bottom { bottom: 8px; left: auto; right: -25px; transform: scale(0.55); transform-origin: bottom right; }
+  .fc-top    { top: 12px; left: -15px; transform: scale(0.5); transform-origin: top left; }
+  .fc-bottom { bottom: 12px; left: auto; right: -15px; transform: scale(0.5); transform-origin: bottom right; }
+  .fc-mid    { top: 50%; right: -20px; left: auto; transform: translateY(-50%) scale(0.5); transform-origin: right center; display: flex !important; }
 }
 
 /* ================================================================
