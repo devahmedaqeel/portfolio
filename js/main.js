@@ -389,7 +389,7 @@
         const json = await res.json();
         if (!res.ok || !json.success) throw new Error("failed");
 
-        setStatus("success", "Successfully Sent! I will contact you soon.");
+        showSuccessModal();
         contactForm.reset();
 
       } catch (err) {
@@ -585,4 +585,143 @@
     document.documentElement.style.setProperty('--status-bar-h', `${statusBar.getBoundingClientRect().height}px`);
   }
 
+  /* ──────────────────────────────────────────────────────────
+     FUTURISTIC POPUP SUCCESS MODAL
+  ────────────────────────────────────────────────────────── */
+  function showSuccessModal() {
+    // Inject custom styles if not already present
+    if (!document.getElementById("success-modal-styles")) {
+      const styles = document.createElement("style");
+      styles.id = "success-modal-styles";
+      styles.textContent = `
+        .lead-success-modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 999999;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(5, 11, 24, 0.85);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          opacity: 0;
+          transition: opacity 0.35s ease;
+        }
+        .lead-success-modal.show {
+          opacity: 1;
+        }
+        .lead-success-card {
+          background: rgba(13, 18, 36, 0.95);
+          border: 1.5px solid rgba(0, 229, 196, 0.4);
+          box-shadow: 0 0 40px rgba(0, 229, 196, 0.25), inset 0 0 20px rgba(0, 229, 196, 0.05);
+          border-radius: 24px;
+          padding: 40px 28px;
+          max-width: 440px;
+          width: 90%;
+          text-align: center;
+          transform: scale(0.85) translateY(30px);
+          transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .lead-success-modal.show .lead-success-card {
+          transform: scale(1) translateY(0);
+        }
+        .lead-success-icon-box {
+          width: 76px;
+          height: 76px;
+          background: rgba(0, 229, 196, 0.1);
+          border: 2px solid #00e5c4;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 24px auto;
+          box-shadow: 0 0 25px rgba(0, 229, 196, 0.35);
+          animation: modalPulse 2s infinite;
+        }
+        @keyframes modalPulse {
+          0% { box-shadow: 0 0 0 0 rgba(0, 229, 196, 0.4); }
+          70% { box-shadow: 0 0 0 14px rgba(0, 229, 196, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(0, 229, 196, 0); }
+        }
+        .lead-success-title {
+          font-family: inherit;
+          font-weight: 800;
+          font-size: 22px;
+          color: #ffffff;
+          margin: 0 0 14px 0;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+        }
+        .lead-success-title span {
+          color: #00e5c4;
+          text-shadow: 0 0 12px rgba(0, 229, 196, 0.4);
+        }
+        .lead-success-text {
+          font-size: 14.5px;
+          line-height: 1.6;
+          color: #9ca3af;
+          margin: 0 0 32px 0;
+        }
+        .lead-success-btn {
+          background: linear-gradient(135deg, #00e5c4 0%, #00b0ff 100%);
+          color: #050b18;
+          font-weight: 700;
+          font-size: 14px;
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          border: none;
+          padding: 14px 44px;
+          border-radius: 30px;
+          cursor: pointer;
+          box-shadow: 0 5px 18px rgba(0, 229, 196, 0.35);
+          transition: all 0.3s ease;
+        }
+        .lead-success-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 24px rgba(0, 229, 196, 0.55);
+        }
+      `;
+      document.head.appendChild(styles);
+    }
+
+    // Create Modal Element
+    const modal = document.createElement("div");
+    modal.className = "lead-success-modal";
+    modal.innerHTML = `
+      <div class="lead-success-card">
+        <div class="lead-success-icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#00e5c4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="34" height="34">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h3 class="lead-success-title">Message <span>Successfully Sent!</span></h3>
+        <p class="lead-success-text">
+          Thank you for reaching out! Your project inquiry has been securely routed to my inbox. I will contact you back within 24 hours.
+        </p>
+        <button class="lead-success-btn" type="button">Continue</button>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    // Fade in
+    setTimeout(() => modal.classList.add("show"), 50);
+
+    // Close logic
+    const closeBtn = modal.querySelector(".lead-success-btn");
+    const closeModal = () => {
+      modal.classList.remove("show");
+      setTimeout(() => modal.remove(), 400);
+    };
+
+    closeBtn.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
+
 })();
+

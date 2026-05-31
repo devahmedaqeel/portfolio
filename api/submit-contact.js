@@ -32,79 +32,84 @@ module.exports = async function handler(req, res) {
       replyTo: email,
       subject: `💼 New Inquiry: ${service || 'General'} - from ${name}`,
       html: `
-        <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 24px; background: #0b0f19; color: #f3f4f6; min-height: 100%;">
-          <div style="max-width: 600px; margin: 0 auto; background: #111827; border-radius: 16px; border: 1px solid rgba(0, 229, 196, 0.25); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3); overflow: hidden;">
+        <div style="font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; padding: 24px 12px; background-color: #030712; color: #f3f4f6; min-height: 100%;">
+          <div style="max-width: 580px; margin: 0 auto; background: #0b0f19; border-radius: 20px; border: 1px solid rgba(0, 229, 196, 0.3); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); overflow: hidden;">
             
-            <!-- Header Banner Box -->
-            <div style="padding: 32px 24px; background: linear-gradient(135deg, #0e1e2d 0%, #061320 100%); border-bottom: 1px solid rgba(0, 229, 196, 0.15); text-align: center;">
-              <span style="display: inline-block; padding: 6px 14px; background: rgba(0, 229, 196, 0.1); border: 1px solid #00e5c4; border-radius: 30px; font-size: 11px; font-weight: bold; color: #00e5c4; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px;">
-                ⚡ New Portfolio Lead
-              </span>
-              <h2 style="margin: 0; color: #ffffff; font-size: 22px; font-weight: 700; letter-spacing: -0.5px;">Project Inquiry Received</h2>
+            <!-- Sleek Glow Header -->
+            <div style="padding: 40px 24px; background: linear-gradient(180deg, rgba(0, 229, 196, 0.1) 0%, rgba(11, 15, 25, 0) 100%); text-align: center; border-bottom: 1px solid rgba(255,255,255,0.03);">
+              <div style="width: 54px; height: 54px; background: rgba(0, 229, 196, 0.1); border: 2.5px solid #00e5c4; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px; box-shadow: 0 0 20px rgba(0, 229, 196, 0.4);">
+                <span style="font-size: 24px; line-height: 54px;">💼</span>
+              </div>
+              <h2 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase;">
+                Inquiry <span style="color: #00e5c4; text-shadow: 0 0 10px rgba(0, 229, 196, 0.25);">Received</span>
+              </h2>
+              <p style="margin: 6px 0 0 0; font-size: 13px; color: #6b7280; text-transform: uppercase; letter-spacing: 2px;">ahmedaqeel.dev // lead router</p>
             </div>
 
             <!-- Content Area -->
-            <div style="padding: 24px;">
+            <div style="padding: 24px 16px;">
               
-              <!-- Professional Box 1: Visitor Information -->
-              <div style="background: #1f2937; border-radius: 12px; border: 1px solid #374151; padding: 18px; margin-bottom: 20px;">
-                <h3 style="margin-top: 0; margin-bottom: 14px; color: #00e5c4; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 6px;">
-                  👤 Visitor Details
+              <!-- Professional Box 1: Visitor details -->
+              <div style="background: #111827; border-radius: 14px; border: 1px solid rgba(255,255,255,0.04); border-left: 4px solid #00e5c4; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                <h3 style="margin-top: 0; margin-bottom: 16px; color: #00e5c4; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center;">
+                  <span style="margin-right: 8px;">👤</span> Visitor Information
                 </h3>
-                <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.6;">
                   <tr>
-                    <td style="padding: 6px 0; color: #9ca3af; width: 100px; font-weight: 500;">Name:</td>
+                    <td style="padding: 6px 0; color: #6b7280; width: 110px; font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px;">Full Name:</td>
                     <td style="padding: 6px 0; color: #ffffff; font-weight: 600;">${name}</td>
                   </tr>
                   <tr>
-                    <td style="padding: 6px 0; color: #9ca3af; font-weight: 500;">Email:</td>
-                    <td style="padding: 6px 0;"><a href="mailto:${email}" style="color: #00e5c4; text-decoration: none; font-weight: 600;">${email}</a></td>
+                    <td style="padding: 6px 0; color: #6b7280; font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px;">Email Link:</td>
+                    <td style="padding: 6px 0;"><a href="mailto:${email}" style="color: #00e5c4; text-decoration: none; font-weight: 600; border-bottom: 1px dashed rgba(0, 229, 196, 0.4);">${email}</a></td>
                   </tr>
                   <tr>
-                    <td style="padding: 6px 0; color: #9ca3af; font-weight: 500;">WhatsApp/Tel:</td>
+                    <td style="padding: 6px 0; color: #6b7280; font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px;">WhatsApp:</td>
                     <td style="padding: 6px 0; color: #ffffff; font-weight: 600;">${phone || 'Not provided'}</td>
                   </tr>
                 </table>
               </div>
 
-              <!-- Professional Box 2: Service & Budget Context -->
-              <div style="background: #1f2937; border-radius: 12px; border: 1px solid #374151; padding: 18px; margin-bottom: 20px;">
-                <h3 style="margin-top: 0; margin-bottom: 14px; color: #00e5c4; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 6px;">
-                  💼 Project Context
+              <!-- Professional Box 2: Project Context -->
+              <div style="background: #111827; border-radius: 14px; border: 1px solid rgba(255,255,255,0.04); border-left: 4px solid #3b82f6; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                <h3 style="margin-top: 0; margin-bottom: 16px; color: #3b82f6; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+                  <span style="margin-right: 8px;">⚙️</span> Project Context
                 </h3>
-                <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.6;">
                   <tr>
-                    <td style="padding: 6px 0; color: #9ca3af; width: 100px; font-weight: 500;">Service:</td>
+                    <td style="padding: 6px 0; color: #6b7280; width: 110px; font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px;">Service:</td>
                     <td style="padding: 6px 0; color: #ffffff; font-weight: 600; text-transform: capitalize;">${service || 'General / Other'}</td>
                   </tr>
                   <tr>
-                    <td style="padding: 6px 0; color: #9ca3af; font-weight: 500;">Budget:</td>
-                    <td style="padding: 6px 0; color: #eab308; font-weight: 700;">${budget || 'Not specified'}</td>
+                    <td style="padding: 6px 0; color: #6b7280; font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px;">Budget:</td>
+                    <td style="padding: 6px 0; color: #eab308; font-weight: 700; font-size: 14px;">💰 ${budget || 'Not specified'}</td>
                   </tr>
                 </table>
               </div>
 
-              <!-- Professional Box 3: Visitor Message -->
-              <div style="background: #1f2937; border-radius: 12px; border: 1px solid #374151; padding: 18px; margin-bottom: 24px;">
-                <h3 style="margin-top: 0; margin-bottom: 12px; color: #00e5c4; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 6px;">
-                  ✉️ Message Details
+              <!-- Professional Box 3: Detailed Message -->
+              <div style="background: #111827; border-radius: 14px; border: 1px solid rgba(255,255,255,0.04); border-left: 4px solid #a855f7; padding: 20px; margin-bottom: 28px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                <h3 style="margin-top: 0; margin-bottom: 14px; color: #a855f7; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+                  <span style="margin-right: 8px;">✉️</span> Message Details
                 </h3>
-                <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #e5e7eb; white-space: pre-wrap;">${message}</p>
+                <div style="background: #0b0f19; border: 1px solid rgba(255,255,255,0.02); border-radius: 8px; padding: 14px; margin-top: 8px;">
+                  <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #d1d5db; white-space: pre-wrap;">${message}</p>
+                </div>
               </div>
 
-              <!-- Call to Action Button -->
-              <div style="text-align: center; margin-bottom: 8px;">
-                <a href="mailto:${email}" style="display: inline-block; padding: 12px 24px; background: #00e5c4; color: #0b0f19; text-decoration: none; font-size: 14px; font-weight: 700; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 229, 196, 0.25); text-transform: uppercase; letter-spacing: 0.5px;">
-                  Reply to Visitor
+              <!-- Call to Action Card -->
+              <div style="text-align: center; margin-bottom: 12px;">
+                <a href="mailto:${email}" style="display: block; padding: 16px 24px; background: linear-gradient(135deg, #00e5c4 0%, #3b82f6 100%); color: #030712; text-decoration: none; font-size: 13px; font-weight: 800; border-radius: 30px; box-shadow: 0 6px 20px rgba(0, 229, 196, 0.3); text-transform: uppercase; letter-spacing: 1.5px; transition: all 0.3s ease;">
+                  📥 Quick Reply to Visitor
                 </a>
               </div>
 
             </div>
 
-            <!-- Footer Meta Box -->
-            <div style="padding: 20px 24px; background: #111827; border-top: 1px solid #1f2937; text-align: center; font-size: 12px; color: #6b7280;">
-              <p style="margin: 0 0 6px 0;">Source: <strong style="color: #9ca3af;">ahmedaqeel.dev</strong></p>
-              <p style="margin: 0;">Routed via Vercel Serverless Gateway at ${new Date().toLocaleString()}</p>
+            <!-- Footer Details -->
+            <div style="padding: 24px; background: #060913; border-top: 1px solid rgba(255,255,255,0.02); text-align: center; font-size: 11px; color: #4b5563; letter-spacing: 0.5px;">
+              <p style="margin: 0 0 8px 0; color: #9ca3af; font-weight: 600;">PORTFOLIO GATEWAY LIVE REPORT</p>
+              <p style="margin: 0;">Inquiry routed automatically via Edge Runtime at ${new Date().toLocaleString()}</p>
             </div>
 
           </div>
