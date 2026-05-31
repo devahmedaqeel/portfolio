@@ -2634,193 +2634,194 @@ nav.scrolled {
    RESPONSIVE — MOBILE  ≤ 768px
    ================================================================ */
 @media (max-width: 768px) {
-  body { overflow-x: hidden; }
-
-  /* Hero section container fixes */
-  .hero, #home {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    min-height: auto !important;
-    padding-top: 110px !important;
-    padding-left: 18px !important;
-    padding-right: 18px !important;
-    padding-bottom: 60px !important;
-    gap: 30px !important;
-    text-align: center !important;
-  }
-
-  /* Image/Avatar wrapper fixes */
-  .hero-visual {
-    order: 1 !important;
-    width: 100% !important;
-    height: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  .avatar-wrap {
-    width: min(78vw, 280px) !important;
-    height: auto !important;
-    margin: 0 auto !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    animation: none !important;
-  }
-
-  .avatar-card {
-    width: 100% !important;
-    aspect-ratio: 3 / 4 !important;
-    height: auto !important;
-    margin-bottom: 20px !important;
-    position: relative !important;
-    overflow: hidden !important;
-    border-radius: 20px !important;
-    border: 1px solid var(--border2) !important;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8) !important;
-  }
-
-  .avatar-img {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center top !important;
-    display: block !important;
-  }
-
-  /* Stats cards / Floating chips fixes */
-  .float-chip {
-    position: relative !important;
-    inset: auto !important;
-    width: min(82vw, 300px) !important;
-    margin: 10px auto !important;
-    transform: none !important;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    bottom: auto !important;
-    display: flex !important;
-    justify-content: center !important;
-    backdrop-filter: blur(10px) !important;
-    animation: none !important;
-  }
-
-  .fc-mid { display: flex !important; }
+  /* Hide chip connector lines */
   .fc-top::after, .fc-top::before,
   .fc-bottom::after, .fc-bottom::before,
   .fc-mid::after, .fc-mid::before { display: none !important; }
 
-  /* Availability badge fixes */
-  .hero-tag {
-    order: -1 !important; /* Move above everything else or keep in flow */
-    position: relative !important;
-    width: min(90vw, 340px) !important;
-    margin: 10px auto !important;
-    transform: none !important;
-    justify-content: center !important;
-    background: rgba(0, 242, 254, 0.05) !important;
-    padding: 8px 16px !important;
-    border-radius: 100px !important;
-    border: 1px solid rgba(0, 242, 254, 0.15) !important;
-  }
-  .hero-tag-text { font-size: 11px !important; font-weight: 700 !important; }
+  :root { --section-pad: 40px 24px; }
 
-  /* Text and Headings fixes */
-  .hero-text {
-    order: 2 !important;
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
+  /* Nav */
+  nav { padding: 0 16px; height: 60px; justify-content: space-between; }
+  .nav-logo .name { font-size: 18px; }
+  .nav-links { display: none; }
+  .nav-cta { 
+    display: flex; 
+    padding: 8px 14px; 
+    font-size: 11px; 
+    margin-left: auto;
+    margin-right: 12px;
+    background: var(--accent);
+    color: #000;
+    font-weight: 800;
+    border-radius: 100px;
   }
+  .hamburger { display: flex; }
 
-  .hero-name, h1 {
-    font-size: clamp(2.2rem, 11vw, 4rem) !important;
-    line-height: 1.05 !important;
-    text-align: center !important;
-    margin: 20px 0 !important;
-    display: block !important;
-    width: 100% !important;
+  /* Mobile slide-down menu */
+  .mobile-menu {
+    position: fixed; top: 60px; left: 0; right: 0;
+    background: rgba(4,7,15,0.98);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border-bottom: 1px solid var(--border2);
+    padding: 20px 24px;
+    display: none; flex-direction: column; gap: 4px;
+    z-index: 999;
   }
-  .hero-name .line-white, .hero-name .line-grad {
-    font-size: inherit !important;
-    display: block !important;
-    white-space: normal !important;
+  .mobile-menu.open {
+    display: flex;
+    animation: mobileMenuIn 0.3s cubic-bezier(0.22,1,0.36,1) forwards;
   }
-
-  .hero-greeting, .hero-subtitle {
-    font-size: clamp(0.9rem, 4vw, 1.1rem) !important;
-    line-height: 1.6 !important;
-    text-align: center !important;
-    margin-bottom: 12px !important;
-    color: #fff !important;
+  @keyframes mobileMenuIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
-
-  .hero-roles {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 10px !important;
-    margin-bottom: 20px !important;
+  .mobile-menu a {
+    font-family: var(--font-mono); font-size: 14px;
+    color: #fff;
+    letter-spacing: 1.2px; text-transform: uppercase;
+    padding: 13px 16px; border-radius: var(--r-md);
+    border: 1px solid transparent; transition: all 0.3s; display: block;
+    font-weight: 700;
   }
-
-  .role-pill {
-    font-size: 0.75rem !important;
-    padding: 8px 14px !important;
-    white-space: nowrap !important;
+  .mobile-menu a:hover {
+    border-color: var(--border); background: var(--accent-dim); color: var(--accent);
+  }
+  .mobile-hire {
+    margin-top: 8px; padding: 14px 16px;
+    background: var(--accent); color: #000;
+    font-family: var(--font-display); font-size: 14px; font-weight: 800;
+    border-radius: var(--r-md); text-align: center;
   }
 
-  .hero-bio, .about-text {
-    font-size: 1rem !important;
-    line-height: 1.8 !important;
-    padding: 0 12px !important;
-    text-align: center !important;
-    margin-bottom: 24px !important;
-    max-width: 580px !important;
-    color: var(--text2) !important;
+  /* Hero — 24px side padding matches --section-pad */
+  .hero {
+    padding: 0 24px;
+    padding-top: calc(var(--nav-h) + 24px);
+    padding-bottom: 52px;
+    gap: 32px;
+    text-align: center;
+  }
+  .hero-tag { 
+    justify-content: center; 
+    background: rgba(0, 242, 254, 0.05);
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1px solid rgba(0, 242, 254, 0.15);
+    margin-bottom: 24px;
+  }
+  .hero-greeting { font-size: 13px; text-align: center; }
+  .hero-roles    { justify-content: center; gap: 6px; }
+  .hero-bio      { font-size: 15px; margin: 0 auto 28px; max-width: 100%; }
+  .hero-actions  { justify-content: center; flex-wrap: wrap; }
+
+  /* Hero visual — smaller orbits, chips hidden except 2 */
+  .hero-visual { height: 360px; }
+  .orbit-1  { width: 300px; height: 300px; }
+  .orbit-2  { width: 238px; height: 238px; }
+  .orbit-3  { width: 180px; height: 180px; }
+  
+  /* Fix Avatar visibility explicitly */
+  .avatar-wrap { 
+    max-width: 220px; 
+    width: 100%; 
+    height: auto !important; 
+    aspect-ratio: 3 / 4 !important; 
+    position: relative;
+  }
+  .avatar-card {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .avatar-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  
+  .avatar-emoji { font-size: 72px; }
+  
+  /* Scale chips down to fit like laptop but smaller */
+  .fc-top    { top: 12px;  left: -40px; transform: scale(0.65); transform-origin: top left; }
+  .fc-bottom { bottom: 12px; left: auto; right: -40px; transform: scale(0.65); transform-origin: bottom right; }
+  .fc-mid    { display: none !important; }
+  .avatar-card::before, .avatar-card::after { width: 30px; height: 30px; }
+
+  /* Stats bar — 3-col grid + full-width marquee row */
+  .stats-bar {
+    padding: 22px 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    text-align: center;
+  }
+  .stat-item   { padding: 0; border-right: none; }
+  .stat-num    { font-size: 26px; }
+  .stat-label  { font-size: 9.5px; letter-spacing: 1px; margin-top: 4px; }
+  .marquee-wrap {
+    grid-column: 1 / -1;
+    padding-left: 0;
+    padding-top: 10px;
+    border-top: 1px solid var(--border2);
+    overflow: hidden;
   }
 
-  .typing-box, .terminal-card {
-    width: 100% !important;
-    max-width: 92vw !important;
-    margin: 20px auto !important;
-    overflow: hidden !important;
-    padding: 38px 16px 14px !important;
-  }
+  /* Sections */
+  .section-header { margin-bottom: 36px; }
+  .sec-title { font-size: clamp(26px, 7vw, 36px); }
+  .sec-sub   { font-size: 14.5px; }
 
-  .hero-actions {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    max-width: 320px !important;
-    gap: 12px !important;
-  }
-  .btn-primary, .btn-outline { width: 100% !important; justify-content: center !important; }
+  /* Skills */
+  .skill-bars-2col { grid-template-columns: 1fr; }
 
-  /* Nav Fixes */
-  nav { padding: 0 16px !important; height: 60px !important; justify-content: space-between !important; top: 0 !important; }
-  .nav-logo .name { font-size: 18px !important; }
-  .nav-links { display: none !important; }
-  .hamburger { display: flex !important; }
-  .mobile-menu { position: fixed !important; top: 60px !important; display: none; }
+  /* Services — single column */
+  .services-grid { grid-template-columns: 1fr; }
 
-  /* Rest of sections... */
-  .stats-bar { grid-template-columns: 1fr !important; padding: 20px !important; }
-  .services-grid, .projects-grid { grid-template-columns: 1fr !important; }
-  .skill-bars-2col { grid-template-columns: 1fr !important; }
-  .skills-columns-row { flex-direction: column !important; }
+  /* Projects — single column */
+  .projects-grid { grid-template-columns: 1fr; }
+
+  /* Timeline */
+  .timeline-container { padding-left: 28px; }
+  .tl-indicator  { left: -34px; }
+  .tl-title      { font-size: 20px; }
+  .tl-description { font-size: 14px; }
+
+  /* Contact */
+  .contact-layout   { gap: 32px; }
+  .contact-headline { font-size: clamp(20px, 6vw, 26px); }
+  .contact-subtext  { font-size: 15px; margin-bottom: 22px; }
+  .contact-item     { padding: 11px 14px; gap: 12px; }
+  .ci-icon-box      { width: 40px; height: 40px; }
+  .ci-label         { font-size: 9.5px; }
+  .ci-value         { font-size: 13.5px; }
+  .social-links     { margin-top: 20px; gap: 8px; }
+  .social-btn       { width: 42px; height: 42px; font-size: 18px; }
+  .form-card        { padding: 28px 22px; }
+  .form-row         { grid-template-columns: 1fr; gap: 0; }
 }
 
 @media (max-width: 480px) {
-  .hero, #home { padding-top: 100px !important; }
-  .avatar-wrap { width: 250px !important; }
-  .hero-name, h1 { font-size: 3rem !important; }
-  .float-chip { width: 260px !important; }
+  :root { --section-pad: 30px 18px; }
+
+  .hero {
+    padding: 0 18px;
+    padding-top: calc(var(--nav-h) + 24px);
+    padding-bottom: 25px;
+    gap: 26px;
+  }
+  
+  .avatar-wrap { 
+    max-width: 180px; 
+  }
+  .hero-visual { height: 280px; }
+  .fc-top    { top: 8px; left: -25px; transform: scale(0.55); transform-origin: top left; }
+  .fc-bottom { bottom: 8px; left: auto; right: -25px; transform: scale(0.55); transform-origin: bottom right; }
 }
 
 /* ================================================================
