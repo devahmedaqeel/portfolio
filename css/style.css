@@ -955,11 +955,13 @@ nav.scrolled {
 .ai-tools-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 32px;
+  gap: 24px;
   width: 100%;
   position: relative;
   z-index: 5;
   box-sizing: border-box;
+  justify-content: center;
+  justify-items: center;
 }
 
 /* AI tool card design */
@@ -968,9 +970,11 @@ nav.scrolled {
   backdrop-filter: blur(16px) saturate(1.8);
   -webkit-backdrop-filter: blur(16px) saturate(1.8);
   border: 1px solid rgba(255, 255, 255, 0.07) !important;
-  border-radius: 24px !important;
-  min-height: 230px;
-  padding: 24px 16px;
+  border-radius: 18px !important;
+  max-width: 200px;
+  width: 100%;
+  min-height: 250px;
+  padding: 16px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -987,18 +991,18 @@ nav.scrolled {
 /* Glowing circle behind/under the icon */
 .ai-tool-icon-wrapper {
   position: relative;
-  width: 88px;
-  height: 88px;
+  width: 72px;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 
 .ai-tool-icon-glow {
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: radial-gradient(circle, var(--glow-color, rgba(0, 242, 254, 0.25)) 0%, transparent 70%);
   filter: blur(4px);
@@ -1006,8 +1010,8 @@ nav.scrolled {
 }
 
 .ai-tool-icon {
-  width: 72px;
-  height: 72px;
+  width: 52px;
+  height: 52px;
   object-fit: contain;
   position: relative;
   z-index: 2;
@@ -1020,15 +1024,15 @@ nav.scrolled {
 .ai-tool-name {
   color: #ffffff;
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 800;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   letter-spacing: -0.5px;
   z-index: 2;
 }
 
 .ai-tool-label {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--label-color, var(--accent));
   letter-spacing: 0.5px;
@@ -1060,9 +1064,9 @@ nav.scrolled {
 /* Custom Square Backgrounds for specific icons */
 .bg-square-green {
   background: linear-gradient(135deg, #10a37f 0%, #026e53 100%) !important;
-  border-radius: 20px !important;
-  width: 80px !important;
-  height: 80px !important;
+  border-radius: 14px !important;
+  width: 60px !important;
+  height: 60px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -1073,15 +1077,15 @@ nav.scrolled {
   box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
 }
 .bg-square-green .ai-tool-icon {
-  width: 48px !important;
-  height: 48px !important;
+  width: 36px !important;
+  height: 36px !important;
 }
 
 .bg-square-light {
   background: #FAF8F5 !important;
-  border-radius: 20px !important;
-  width: 80px !important;
-  height: 80px !important;
+  border-radius: 14px !important;
+  width: 60px !important;
+  height: 60px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -1092,8 +1096,8 @@ nav.scrolled {
   box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
 }
 .bg-square-light .ai-tool-icon {
-  width: 48px !important;
-  height: 48px !important;
+  width: 36px !important;
+  height: 36px !important;
 }
 
 /* Precise CSS Filters to make brand SVGs colorful, clear, and bright */
