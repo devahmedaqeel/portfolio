@@ -36,7 +36,7 @@
   --font-mono:    'JetBrains Mono', monospace;
 
   /* Spacing */
-  --section-pad: 140px 60px;
+  --section-pad: 80px 60px;
   --nav-h: 80px;
 
   /* Radius */
@@ -332,7 +332,7 @@ nav.scrolled {
 
 .hero-roles {
   display: flex; flex-wrap: wrap; gap: 8px;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 .role-pill {
   font-family: var(--font-mono); font-size: 10.5px;
@@ -358,13 +358,15 @@ nav.scrolled {
   border-left: 4px solid var(--accent);
   border-radius: var(--r-md);
   padding: 42px 20px 14px 20px;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
   font-family: var(--font-mono); font-size: 13px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   cursor: text;
   transition: border-color 0.3s, box-shadow 0.3s;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 .typing-box.active-shell {
   border-color: rgba(0, 229, 196, 0.5);
@@ -389,17 +391,17 @@ nav.scrolled {
   align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   padding-bottom: 4px;
-}
 .terminal-title {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--text3);
   letter-spacing: 0.5px;
 }
 .terminal-action-hint {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--accent);
   opacity: 0.65;
   letter-spacing: 0.5px;
+}
   animation: pulseGrad 2.5s infinite;
 }
 .terminal-body {
@@ -572,6 +574,7 @@ nav.scrolled {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   z-index: 1;
   transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
 }
@@ -724,16 +727,16 @@ nav.scrolled {
 
 .chip-icon { font-size: 16px; margin-bottom: 2px; }
 .chip-val  { font-family: var(--font-display); font-size: 18px; font-weight: 800; color: #fff; }
-.chip-lbl  { font-family: var(--font-mono); font-size: 8.5px; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; }
+.chip-lbl  { font-family: var(--font-mono); font-size: 9.5px; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; }
 .chip-name { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: #fff; }
-.chip-loc  { font-family: var(--font-mono); font-size: 9px; color: var(--text3); }
+.chip-loc  { font-family: var(--font-mono); font-size: 11px; color: var(--text3); }
 
 /* ================================================================
    STATS BAR
    ================================================================ */
 .stats-bar {
   position: relative; z-index: 10;
-  padding: 36px 60px;
+  padding: 24px 60px;
   border-top: 1px solid var(--border2);
   border-bottom: 1px solid var(--border2);
   background: rgba(5,8,15,0.6);
@@ -796,7 +799,7 @@ nav.scrolled {
 }
 .section.alt-bg { background: rgba(5,8,15,0.72); }
 
-.section-header { margin-bottom: 80px; }
+.section-header { margin-bottom: 40px; }
 .section-header.centered { text-align: center; }
 .section-header.centered .sec-eyebrow { justify-content: center; }
 .section-header.centered .sec-sub { margin-left: auto; margin-right: auto; }
@@ -806,7 +809,7 @@ nav.scrolled {
   display: inline-flex; align-items: center; gap: 8px;
   background: rgba(255,255,255,0.03);
   padding: 6px 16px; border-radius: 6px;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
   border: 1px solid var(--border2);
 }
 .sec-eyebrow-text {
@@ -819,7 +822,7 @@ nav.scrolled {
   font-family: var(--font-display);
   font-size: clamp(34px, 5vw, 62px);
   font-weight: 900; line-height: 1;
-  letter-spacing: -2px; margin-bottom: 22px;
+  letter-spacing: -2px; margin-bottom: 14px;
   color: #fff;
 }
 .sec-title .grad {
@@ -843,9 +846,9 @@ nav.scrolled {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(180px, auto);
-  gap: 24px;
+  gap: 16px;
   width: 100%;
-  margin-top: 32px;
+  margin-top: 24px;
 }
 
 /* ── BENTO CARD: Glassmorphism style ────────────────── */
@@ -999,7 +1002,7 @@ nav.scrolled {
   -webkit-backdrop-filter: blur(16px) saturate(1.8);
   border: 1px solid rgba(255, 255, 255, 0.07) !important;
   border-radius: 24px !important;
-  height: 230px;
+  min-height: 230px;
   padding: 24px 16px;
   display: flex;
   flex-direction: column;
@@ -1210,7 +1213,7 @@ nav.scrolled {
     gap: 20px;
   }
   .ai-tool-card {
-    height: 190px;
+    min-height: 190px;
     padding: 16px 12px;
   }
   .ai-tool-icon-wrapper {
@@ -1307,6 +1310,8 @@ nav.scrolled {
   display: flex;
   flex-direction: column;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 /* Hover: Elegant Lift & Glow */
@@ -1989,7 +1994,7 @@ nav.scrolled {
 .contact-layout {
   display: grid;
   grid-template-columns: 1fr 1.25fr;
-  gap: 56px;
+  gap: 40px;
   align-items: start;
 }
 
@@ -2302,7 +2307,7 @@ nav.scrolled {
   z-index: 20; /* higher to stay above canvas/reveal */
   background: #02040a;
   color: #fff;
-  padding: 80px 0 0;
+  padding: 40px 0 0;
   overflow: hidden;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   margin-top: 0;
@@ -2314,8 +2319,8 @@ nav.scrolled {
   padding: 0 60px;
   display: grid;
   grid-template-columns: 1.5fr 0.8fr 0.8fr 1.2fr;
-  gap: 60px;
-  padding-bottom: 60px;
+  gap: 40px;
+  padding-bottom: 40px;
 }
 
 .footer-col {
@@ -2563,12 +2568,12 @@ nav.scrolled {
    Side padding: 60px — matches nav + hero + stats + footer
    ================================================================ */
 @media (max-width: 1200px) {
-  :root { --section-pad: 90px 60px; }
+  :root { --section-pad: 60px 60px; }
   nav        { padding: 0 60px; }
-  .hero      { padding: 0 60px; padding-top: 100px;
+  .hero      { padding: 0 60px; padding-top: 60px;
                grid-template-columns: 1fr 340px; gap: 48px; }
-  .stats-bar { padding: 32px 60px; }
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-bar { padding: 20px 60px; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .contact-layout { gap: 48px; }
 }
 
@@ -2588,15 +2593,15 @@ nav.scrolled {
     display: none !important;
   }
 
-  :root { --section-pad: 80px 48px; }
+  :root { --section-pad: 50px 48px; }
   nav { padding: 0 48px; }
 
   /* Hero: single column, visual above text */
   .hero {
     grid-template-columns: 1fr;
     padding: 0 48px;
-    padding-top: 100px;
-    padding-bottom: 64px;
+    padding-top: 60px;
+    padding-bottom: 40px;
     text-align: center;
     min-height: auto;
     gap: 40px;
@@ -2614,7 +2619,7 @@ nav.scrolled {
   .orbit-3 { width: 200px; height: 200px; }
 
   /* Avatar: proportionally smaller for single-col centered layout */
-  .avatar-wrap  { width: 218px; height: auto !important; aspect-ratio: 3 / 4 !important; }
+  .avatar-wrap  { max-width: 280px; width: 100%; height: auto !important; aspect-ratio: 3 / 4 !important; }
   .avatar-emoji { font-size: 80px; }
 
   /* Float chips — tighter positions so they don't overflow */
@@ -2662,7 +2667,7 @@ nav.scrolled {
   .fc-bottom::after, .fc-bottom::before,
   .fc-mid::after, .fc-mid::before { display: none !important; }
 
-  :root { --section-pad: 64px 24px; }
+  :root { --section-pad: 40px 24px; }
 
   /* Nav */
   nav { padding: 0 16px; height: 60px; justify-content: space-between; }
@@ -2683,7 +2688,7 @@ nav.scrolled {
 
   /* Mobile slide-down menu */
   .mobile-menu {
-    position: fixed; top: calc(var(--status-bar-h, 30px) + 64px); left: 0; right: 0;
+    position: fixed; top: calc(var(--status-bar-h, 30px) + 60px); left: 0; right: 0;
     background: rgba(4,7,15,0.98);
     backdrop-filter: blur(28px);
     -webkit-backdrop-filter: blur(28px);
@@ -2737,7 +2742,7 @@ nav.scrolled {
   .orbit-1  { width: 300px; height: 300px; }
   .orbit-2  { width: 238px; height: 238px; }
   .orbit-3  { width: 180px; height: 180px; }
-  .avatar-wrap { max-width: 200px; width: 100%; height: auto !important; aspect-ratio: 3 / 4 !important; }
+  .avatar-wrap { max-width: 240px; width: 100%; height: auto !important; aspect-ratio: 3 / 4 !important; }
   .avatar-emoji { font-size: 72px; }
   .fc-top    { top: 8px;  left: -34px; transform: scale(0.88); }
   .fc-bottom { bottom: 8px; left: auto; right: -34px; transform: scale(0.88); }
@@ -2807,7 +2812,7 @@ nav.scrolled {
    Side padding: 18px — everything single column, compact
    ================================================================ */
 @media (max-width: 480px) {
-  :root { --section-pad: 44px 18px; }
+  :root { --section-pad: 30px 18px; }
 
   /* Status bar hidden — nav goes to absolute top */
 
@@ -2815,7 +2820,7 @@ nav.scrolled {
   .hero {
     padding: 0 18px;
     padding-top: calc(var(--status-bar-h, 30px) + var(--nav-h));
-    padding-bottom: 44px;
+    padding-bottom: 25px;
     gap: 26px;
   }
   .hero-greeting { font-size: 12.5px; }
@@ -2830,15 +2835,19 @@ nav.scrolled {
   .orbit-1 { width: 245px; height: 245px; }
   .orbit-2 { width: 190px; height: 190px; }
   .orbit-3 { width: 140px; height: 140px; }
-  .avatar-wrap  { max-width: 160px; width: 100%; height: auto !important; aspect-ratio: 3 / 4 !important; }
+  .avatar-wrap  { max-width: 200px; width: 100%; height: auto !important; aspect-ratio: 3 / 4 !important; }
   .avatar-emoji { font-size: 60px; }
   .fc-top    { top: 4px;  left: -18px; transform: scale(0.78); }
   .fc-bottom { bottom: 4px; left: auto; right: -18px; transform: scale(0.78); }
 
   /* Stats */
-  .stats-bar  { padding: 18px; gap: 12px; }
+  .stats-bar  { 
+    padding: 18px; 
+    gap: 20px; 
+    grid-template-columns: 1fr;
+  }
   .stat-num   { font-size: 24px; }
-  .stat-label { font-size: 9px; }
+  .stat-label { font-size: 11px; }
 
   /* Section header */
   .section-header { margin-bottom: 28px; }
@@ -2848,7 +2857,7 @@ nav.scrolled {
   /* Cards */
   .skill-card   { padding: 22px 16px; }
   .svc-content { padding: 22px 16px; }
-  .skill-card-title { font-size: 15px; }
+  .skill-card-title { font-size: 16px; }
   .svc-title { font-size: 15px; }
   .project-title { font-size: 17px; }
 
@@ -3185,12 +3194,12 @@ html, body { overflow-x: hidden; }
    RESPONSIVE — 600px  (between 480px and 768px, placed AFTER both)
    ================================================================ */
 @media (min-width: 481px) and (max-width: 600px) {
-  :root { --section-pad: 52px 20px; }
+  :root { --section-pad: 35px 20px; }
   nav        { padding: 0 20px; height: 60px; }
-  .hero      { padding: 0 20px; padding-top: calc(var(--status-bar-h, 30px) + var(--nav-h)); padding-bottom: 48px; gap: 28px; }
+  .hero      { padding: 0 20px; padding-top: calc(var(--status-bar-h, 30px) + var(--nav-h)); padding-bottom: 35px; gap: 28px; }
   .stats-bar { padding: 20px; }
   footer     { padding: 0 20px; }
-  .services-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .services-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
   .form-row  { grid-template-columns: 1fr; }
   .contact-layout { gap: 30px; }
 }
@@ -3199,9 +3208,9 @@ html, body { overflow-x: hidden; }
    RESPONSIVE — 360px  (very small phones, placed LAST)
    ================================================================ */
 @media (max-width: 360px) {
-  :root { --section-pad: 36px 14px; }
+  :root { --section-pad: 25px 14px; }
   nav        { padding: 0 14px; }
-  .hero      { padding: 0 14px; padding-top: 64px; }
+  .hero      { padding: 0 14px; padding-top: 64px; padding-bottom: 25px; }
   .stats-bar { padding: 14px; }
   footer     { padding: 0 14px; }
   .form-card { padding: 18px 14px; }
@@ -3217,7 +3226,7 @@ html, body { overflow-x: hidden; }
    ══════════════════════════════════════════════════════════════ */
 
 /* ── 1. HERO: background radial orb glows ─────────────────────── */
-.hero { position: relative; overflow: hidden; }
+.hero { position: relative; overflow: hidden; padding-top: 60px; }
 
 .hero::before {
   content: '';
@@ -3916,3 +3925,475 @@ strong, b { font-weight: 700; }
   .footer-container,
   .footer-bottom-bar { max-width: 1280px; }
 }
+
+/* ================================================================
+   COMPREHENSIVE LAYOUT FIXES v8.0
+   Hero pic section, float chips, projects grid, skills grid,
+   missing thumbnails, AI tools mobile, all devices clean
+   ================================================================ */
+
+/* ── HERO VISUAL: strict containment so nothing spills ──────── */
+.hero-visual {
+  position: relative;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Prevent hero from creating horizontal scroll */
+.hero {
+  overflow-x: clip;
+}
+
+/* ── AVATAR WRAP: proper sizing, no random heights ──────────── */
+.avatar-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── FLOAT CHIPS: keep them INSIDE the hero-visual bounds ───── */
+/* Desktop: chips float beside the avatar card only */
+.fc-top {
+  top: 18%;
+  right: calc(100% + 20px);
+  left: auto;
+  min-width: 120px;
+  white-space: nowrap;
+}
+.fc-bottom {
+  bottom: 18%;
+  right: calc(100% + 20px);
+  left: auto;
+  min-width: 120px;
+  white-space: nowrap;
+}
+.fc-mid {
+  top: 50%;
+  left: calc(100% + 20px);
+  right: auto;
+  transform: translateY(-50%);
+  min-width: 110px;
+  white-space: nowrap;
+}
+
+/* Connector dots and lines: always hidden on ≤1100px to prevent overflow */
+@media (max-width: 1200px) {
+  .fc-top::before, .fc-top::after,
+  .fc-bottom::before, .fc-bottom::after,
+  .fc-mid::before, .fc-mid::after {
+    display: none !important;
+  }
+  /* Reposition chips so they stay inside the visual area */
+  .fc-top    { top: 4px; right: auto; left: -10px; transform: scale(0.85); transform-origin: top left; }
+  .fc-bottom { bottom: 4px; left: auto; right: -10px; transform: scale(0.85); transform-origin: bottom right; }
+  .fc-mid    { top: auto; bottom: -56px; left: 50%; transform: translateX(-50%); right: auto; }
+}
+
+@media (max-width: 1024px) {
+  .fc-top    { top: 4px; left: 0; right: auto; transform: scale(0.82); transform-origin: top left; }
+  .fc-bottom { bottom: 4px; right: 0; left: auto; transform: scale(0.82); transform-origin: bottom right; }
+  .fc-mid    { display: none; }
+}
+
+@media (max-width: 768px) {
+  .fc-top    { top: 6px; left: 4px; transform: scale(0.78); transform-origin: top left; }
+  .fc-bottom { bottom: 6px; right: 4px; left: auto; transform: scale(0.78); transform-origin: bottom right; }
+  .fc-mid    { display: none !important; }
+}
+
+@media (max-width: 480px) {
+  .fc-top    { top: 4px; left: 2px; transform: scale(0.72); transform-origin: top left; }
+  .fc-bottom { bottom: 4px; right: 2px; left: auto; transform: scale(0.72); transform-origin: bottom right; }
+  .fc-mid    { display: none !important; }
+}
+
+/* ── PROJECTS GRID: proper desktop 3-column layout ───────────── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .projects-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+}
+@media (max-width: 1024px) {
+  .projects-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+}
+@media (max-width: 640px) {
+  .projects-grid { grid-template-columns: 1fr; gap: 14px; }
+}
+
+/* ── SKILLS GRID: full width, proper display ─────────────────── */
+.skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+}
+
+/* ── SKILLS COLUMNS: responsive ─────────────────────────────── */
+.skills-columns-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+@media (max-width: 1024px) {
+  .skills-columns-row { grid-template-columns: 1fr; gap: 24px; }
+}
+
+/* ── PROJECT THUMBNAIL: proper aspect ratio, no broken images ─ */
+.project-thumb {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a1020 0%, #0f1838 50%, #080d1e 100%);
+  flex-shrink: 0;
+}
+
+.project-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Fallback placeholder when image fails to load */
+.project-thumb img[src=""],
+.project-thumb img:not([src]),
+.project-thumb img[src$="undefined"] {
+  display: none;
+}
+
+/* Pseudo-element tech pattern fallback background */
+.project-thumb::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(0,229,196,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 30% 50%, rgba(59,130,246,0.08) 0%, transparent 60%),
+    radial-gradient(rgba(0,229,196,0.04) 1px, transparent 1px);
+  background-size: 100%, 100%, 20px 20px;
+  z-index: 0;
+}
+
+.project-thumb img { position: relative; z-index: 1; }
+.project-thumb::after { z-index: 2; }
+
+/* Thumbnail icon overlay (always visible as fallback) */
+.project-thumb .pt-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  opacity: 0.18;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── SERVICE CARD BANNER: consistent height ─────────────────── */
+.svc-img-banner {
+  height: 160px;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a1020 0%, #0f1838 100%);
+}
+
+.svc-img-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── AI TOOLS GRID: better mobile wrapping ──────────────────── */
+@media (max-width: 960px) {
+  .ai-tools-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ai-tools-section { padding: 28px 20px; }
+  .ai-tools-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .ai-tool-card { min-height: 160px; padding: 16px 10px; }
+  .ai-tool-icon { width: 48px; height: 48px; }
+  .ai-tool-icon-wrapper { width: 64px; height: 64px; margin-bottom: 10px; }
+  .ai-tool-name { font-size: 15px; margin-bottom: 4px; }
+  .ai-tool-label { font-size: 11px; }
+}
+
+@media (max-width: 500px) {
+  .ai-tools-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .ai-tool-card { min-height: 140px; padding: 14px 8px; border-radius: 16px !important; }
+}
+
+@media (max-width: 360px) {
+  .ai-tools-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
+
+/* ── SECTION CONTAINERS: strict overflow prevention ─────────── */
+.container {
+  padding-inline: clamp(16px, 4vw, 60px);
+}
+
+/* Sections that might overflow */
+#skills, #services, #projects, #experience, #contact {
+  overflow-x: clip;
+}
+
+/* ── SKILL CARDS: better mobile layout ──────────────────────── */
+@media (max-width: 768px) {
+  .skill-head { gap: 18px; margin-bottom: 24px; }
+  .skill-icon { width: 60px; height: 60px; }
+  .skill-icon img, .skill-icon svg { width: 44px !important; height: 44px !important; }
+  .skill-tech-list { gap: 10px; flex-wrap: wrap; }
+  .skill-tech-list img, .skill-tech-list svg { width: 22px !important; height: 22px !important; }
+}
+
+@media (max-width: 480px) {
+  .skill-icon { width: 52px; height: 52px; }
+  .skill-icon img, .skill-icon svg { width: 38px !important; height: 38px !important; }
+}
+
+/* ── SECTION HEADER: fix centered alignment on mobile ────────── */
+@media (max-width: 768px) {
+  .section-header.centered .sec-sub {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 8px;
+  }
+}
+
+/* ── HERO NAME: prevent text overlap on small screens ───────── */
+@media (max-width: 360px) {
+  .hero-name .line-white,
+  .hero-name .line-grad {
+    font-size: clamp(24px, 8vw, 38px);
+    white-space: normal;
+    word-break: break-word;
+  }
+}
+
+/* ── STATS BAR: proper desktop flex ──────────────────────────── */
+@media (min-width: 769px) {
+  .stats-bar {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  .stat-item {
+    flex-shrink: 0;
+    border-right: 1px solid var(--border2);
+    padding: 0 36px;
+  }
+  .stat-item:first-child { padding-left: 0; }
+  .marquee-wrap { flex: 1; min-width: 0; }
+}
+
+/* ── CONTACT LAYOUT: ensure it never overflows ───────────────── */
+.contact-layout {
+  min-width: 0;
+}
+.contact-info, .form-card {
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ── FOOTER: no horizontal scroll ────────────────────────────── */
+@media (max-width: 1024px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 0 32px 48px;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 0 20px 40px;
+  }
+}
+
+/* ── GLOBAL BODY: hard overflow clip ─────────────────────────── */
+body { overflow-x: hidden; }
+
+/* Ensure nothing bleeds beyond viewport width */
+* { max-width: 100%; box-sizing: border-box; }
+img { max-width: 100%; height: auto; }
+
+/* ================================================================
+   ICON FIX LAYER v9.0
+   All icons visible, correct sizing, no invisible icons on dark bg
+   ================================================================ */
+
+/* ── Tech icon inline: always visible, correct size ─────────── */
+.tech-icon-inline {
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px;
+  min-height: 24px;
+  flex-shrink: 0;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Override the global filter that dims icons */
+.skill-bar .tech-icon-inline,
+.skill-bar img,
+.skill-bar svg {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* ── Skill tech list icons ────────────────────────────────────── */
+.skill-tech-list img,
+.skill-tech-list svg {
+  width: 26px !important;
+  height: 26px !important;
+  min-width: 26px;
+  min-height: 26px;
+  object-fit: contain;
+  display: inline-block;
+  filter: none !important;
+  opacity: 1 !important;
+  flex-shrink: 0;
+}
+
+/* ── Skill icon cycler container: correct size ───────────────── */
+.skill-icon img,
+.skill-icon svg {
+  width: 52px !important;
+  height: 52px !important;
+  object-fit: contain;
+}
+
+/* ── AI tool icons: prevent filter override ──────────────────── */
+.ai-tool-icon {
+  filter: none !important;
+  opacity: 1 !important;
+}
+/* Apply specific color filters ONLY for monochrome icons */
+.ai-tool-icon.filter-white    { filter: brightness(0) invert(1) !important; opacity: 1 !important; }
+.ai-tool-icon.filter-gemini   { filter: invert(60%) sepia(85%) saturate(1500%) hue-rotate(190deg) brightness(105%) contrast(100%) !important; opacity: 1 !important; }
+.ai-tool-icon.filter-copilot  { filter: invert(72%) sepia(70%) saturate(1800%) hue-rotate(170deg) brightness(105%) contrast(100%) !important; opacity: 1 !important; }
+.ai-tool-icon.filter-cursor   { filter: invert(53%) sepia(85%) saturate(1800%) hue-rotate(240deg) brightness(100%) contrast(100%) !important; opacity: 1 !important; }
+.ai-tool-icon.filter-ollama   { filter: brightness(0) invert(1) !important; opacity: 1 !important; }
+.ai-tool-icon.filter-n8n      { filter: invert(36%) sepia(90%) saturate(1800%) hue-rotate(310deg) brightness(100%) contrast(100%) !important; opacity: 1 !important; }
+.ai-tool-icon.filter-huggingface { filter: invert(75%) sepia(60%) saturate(1000%) hue-rotate(5deg) brightness(105%) contrast(105%) !important; opacity: 1 !important; }
+.ai-tool-icon.filter-perplexity  { filter: invert(72%) sepia(70%) saturate(1800%) hue-rotate(170deg) brightness(105%) contrast(100%) !important; opacity: 1 !important; }
+.ai-tool-icon.filter-replit   { filter: invert(53%) sepia(85%) saturate(1800%) hue-rotate(5deg) brightness(100%) contrast(100%) !important; opacity: 1 !important; }
+.ai-tool-icon.filter-claude   { filter: invert(37%) sepia(85%) saturate(1600%) hue-rotate(15deg) brightness(95%) contrast(98%) !important; opacity: 1 !important; }
+.ai-tool-icon.filter-openai-green { filter: invert(48%) sepia(74%) saturate(3000%) hue-rotate(130deg) brightness(95%) contrast(90%) !important; opacity: 1 !important; }
+
+/* ── Marquee logo icons: always show in color ────────────────── */
+.marquee-item img.m-logo {
+  width: 22px !important;
+  height: 22px !important;
+  object-fit: contain;
+  flex-shrink: 0;
+  opacity: 1 !important;
+}
+
+/* ── Avatar image: correct display ───────────────────────────── */
+.avatar-img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+}
+
+/* ── SEO section: all simpleicons show with brand colors ─────── */
+.si-seo .skill-icon img,
+.si-seo .skill-icon svg {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* ── Canva icon: always colored ──────────────────────────────── */
+img[src*="canva"] {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* ── broken-image guard: hide alt text for missing icons ─────── */
+img:not([src]),
+img[src=""],
+img[src$="undefined"],
+img[src$="null"] {
+  display: none !important;
+}
+
+/* ── Service card image banners: consistent sizing ───────────── */
+.svc-img-banner {
+  height: 160px !important;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a1020 0%, #0f1838 100%);
+}
+.svc-img-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Avatar status bar fix: show above image ─────────────────── */
+.avatar-label,
+.avatar-status-bar {
+  position: absolute;
+  z-index: 25;
+}
+.avatar-label { bottom: 48px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+.avatar-status-bar { bottom: 14px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+
+/* ── Mobile: no invisible icons ──────────────────────────────── */
+@media (max-width: 768px) {
+  .tech-icon-inline {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px;
+    min-height: 20px;
+  }
+  .skill-tech-list img,
+  .skill-tech-list svg {
+    width: 22px !important;
+    height: 22px !important;
+    min-width: 22px;
+    min-height: 22px;
+  }
+  .ai-tool-icon {
+    width: 48px !important;
+    height: 48px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-icon-inline {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px;
+    min-height: 18px;
+  }
+  .ai-tool-icon {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+
