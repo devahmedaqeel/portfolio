@@ -589,7 +589,32 @@
      FUTURISTIC POPUP SUCCESS MODAL
   ────────────────────────────────────────────────────────── */
   function showSuccessModal() {
-    // Inject custom styles if not already present
+    // 1. Synthesize a premium electronic chime sound using Web Audio API
+    try {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioContextClass) {
+        const audioCtx = new AudioContextClass();
+        const playTone = (freq, start, duration) => {
+          const osc = audioCtx.createOscillator();
+          const gainNode = audioCtx.createGain();
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(freq, start);
+          gainNode.gain.setValueAtTime(0.06, start);
+          gainNode.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+          osc.connect(gainNode);
+          gainNode.connect(audioCtx.destination);
+          osc.start(start);
+          osc.stop(start + duration);
+        };
+        const now = audioCtx.currentTime;
+        playTone(523.25, now, 0.1);        // C5
+        playTone(783.99, now + 0.08, 0.22); // G5
+      }
+    } catch (soundError) {
+      // Gracefully ignore if audio context is blocked
+    }
+
+    // 2. Inject custom modal and toast styles if not already present
     if (!document.getElementById("success-modal-styles")) {
       const styles = document.createElement("style");
       styles.id = "success-modal-styles";
@@ -683,11 +708,107 @@
           transform: translateY(-2px);
           box-shadow: 0 8px 24px rgba(0, 229, 196, 0.55);
         }
+
+        /* Toast Popup styles */
+        .sys-toast-container {
+          position: fixed;
+          top: calc(var(--status-bar-h, 30px) + 20px);
+          right: 20px;
+          z-index: 9999999;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          pointer-events: none;
+        }
+        .sys-toast {
+          pointer-events: auto;
+          background: rgba(13, 18, 36, 0.95);
+          border: 1px solid rgba(0, 229, 196, 0.4);
+          box-shadow: 0 0 25px rgba(0, 229, 196, 0.25), inset 0 0 10px rgba(0, 229, 196, 0.05);
+          border-radius: 14px;
+          padding: 14px 18px;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          min-width: 300px;
+          max-width: 380px;
+          transform: translateX(120%);
+          opacity: 0;
+          transition: all 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .sys-toast.show {
+          transform: translateX(0);
+          opacity: 1;
+        }
+        .sys-toast-icon {
+          width: 32px;
+          height: 32px;
+          background: rgba(0, 229, 196, 0.1);
+          border: 1.5px solid #00e5c4;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #00e5c4;
+          box-shadow: 0 0 10px rgba(0, 229, 196, 0.3);
+          flex-shrink: 0;
+        }
+        .sys-toast-content {
+          flex-grow: 1;
+        }
+        .sys-toast-title {
+          font-size: 13px;
+          font-weight: 800;
+          color: #ffffff;
+          margin: 0 0 2px 0;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+        }
+        .sys-toast-title span {
+          color: #00e5c4;
+        }
+        .sys-toast-desc {
+          font-size: 11.5px;
+          color: #9ca3af;
+          margin: 0;
+        }
       `;
       document.head.appendChild(styles);
     }
 
-    // Create Modal Element
+    // 3. Create and trigger a beautiful floating Toast Notification Popup
+    let toastContainer = document.querySelector(".sys-toast-container");
+    if (!toastContainer) {
+      toastContainer = document.createElement("div");
+      toastContainer.className = "sys-toast-container";
+      document.body.appendChild(toastContainer);
+    }
+
+    const toast = document.createElement("div");
+    toast.className = "sys-toast";
+    toast.innerHTML = `
+      <div class="sys-toast-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#00e5c4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <div class="sys-toast-content">
+        <h4 class="sys-toast-title">Transmission <span>Successful!</span></h4>
+        <p class="sys-toast-desc">Lead data routed securely to inbox.</p>
+      </div>
+    `;
+    toastContainer.appendChild(toast);
+
+    // Slide in toast
+    setTimeout(() => toast.classList.add("show"), 100);
+
+    // Auto-remove toast after 3.5 seconds
+    setTimeout(() => {
+      toast.classList.remove("show");
+      setTimeout(() => toast.remove(), 500);
+    }, 3500);
+
+    // 4. Create and trigger the Main Center Glassmorphic Modal
     const modal = document.createElement("div");
     modal.className = "lead-success-modal";
     modal.innerHTML = `
@@ -707,8 +828,8 @@
 
     document.body.appendChild(modal);
 
-    // Fade in
-    setTimeout(() => modal.classList.add("show"), 50);
+    // Fade in modal
+    setTimeout(() => modal.classList.add("show"), 150);
 
     // Close logic
     const closeBtn = modal.querySelector(".lead-success-btn");
