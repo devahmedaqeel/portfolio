@@ -732,7 +732,7 @@ nav.scrolled {
 }
 .marquee-inner {
   display: flex; gap: 0;
-  animation: marquee 28s linear infinite;
+  animation: marquee 14s linear infinite;
   width: max-content;
 }
 .marquee-item {
