@@ -368,6 +368,7 @@
         const email   = (emailEl?.value || "").trim();
         const phone   = ($("#c-phone", contactForm)?.value || "").trim();
         const service = ($("#c-service", contactForm)?.value || "").trim();
+        const budget  = ($("#c-budget",  contactForm)?.value || "").trim();
         const message = ($("#c-msg",   contactForm)?.value || "").trim();
 
         const res = await fetch('/api/submit-contact', {
@@ -380,6 +381,7 @@
             email,
             phone,
             service,
+            budget,
             message
           })
         });
@@ -387,8 +389,9 @@
         const json = await res.json();
         if (!res.ok || !json.success) throw new Error("failed");
 
-        setStatus("success", "Message sent successfully. I will contact you soon.");
+        setStatus("success", "Successfully Sent! I will contact you soon.");
         contactForm.reset();
+
       } catch (err) {
         setStatus("error", "Failed to send message. Please try again.");
       } finally {
