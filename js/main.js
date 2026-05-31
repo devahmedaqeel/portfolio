@@ -796,8 +796,8 @@
         </svg>
       </div>
       <div class="sys-toast-content">
-        <h4 class="sys-toast-title">Message <span>Successfully Sent!</span></h4>
-        <p class="sys-toast-desc">Your project inquiry has been securely routed.</p>
+        <h4 class="sys-toast-title"><span>Successfully Sent!</span></h4>
+        <p class="sys-toast-desc">We will contact you soon.</p>
       </div>
     `;
     toastContainer.appendChild(toast);
@@ -821,9 +821,9 @@
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>
         </div>
-        <h3 class="lead-success-title">Message <span>Successfully Sent!</span></h3>
+        <h3 class="lead-success-title"><span>Successfully Sent!</span></h3>
         <p class="lead-success-text">
-          Thank you for reaching out! Your project inquiry has been securely routed to my inbox. I will contact you back within 24 hours.
+          We will contact you soon.
         </p>
         <button class="lead-success-btn" type="button">Continue</button>
       </div>
