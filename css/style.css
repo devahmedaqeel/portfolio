@@ -1166,6 +1166,21 @@ nav.scrolled {
   opacity: 1 !important;
 }
 
+.filter-supabase, .m-logo.filter-supabase {
+  filter: invert(72%) sepia(45%) saturate(1000%) hue-rotate(100deg) brightness(100%) contrast(100%) drop-shadow(0 0 12px #3ecf8e) !important;
+  opacity: 1 !important;
+}
+
+.filter-vercel, .m-logo.filter-vercel {
+  filter: brightness(0) invert(1) drop-shadow(0 0 12px #ffffff) !important;
+  opacity: 1 !important;
+}
+
+.filter-stackblitz, .m-logo.filter-stackblitz {
+  filter: invert(47%) sepia(90%) saturate(1500%) hue-rotate(180deg) brightness(100%) contrast(100%) drop-shadow(0 0 12px #1182c5) !important;
+  opacity: 1 !important;
+}
+
 @keyframes pulseCyan {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.4; transform: scale(1.3); }
