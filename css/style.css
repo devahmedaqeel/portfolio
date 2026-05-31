@@ -4525,4 +4525,11 @@ img[src$="null"] {
   }
 }
 
+/* Premium laptop & desktop hero spacing fix */
+@media (min-width: 1024px) {
+  .hero {
+    padding-bottom: 110px !important;
+  }
+}
+
 
