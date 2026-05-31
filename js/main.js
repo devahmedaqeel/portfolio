@@ -709,35 +709,38 @@
           box-shadow: 0 8px 24px rgba(0, 229, 196, 0.55);
         }
 
-        /* Toast Popup styles */
+        /* Toast Popup styles - TOP CENTER */
         .sys-toast-container {
           position: fixed;
           top: calc(var(--status-bar-h, 30px) + 20px);
-          right: 20px;
+          left: 50%;
+          transform: translateX(-50%);
           z-index: 9999999;
           display: flex;
           flex-direction: column;
+          align-items: center;
           gap: 12px;
           pointer-events: none;
+          width: 90%;
+          max-width: 400px;
         }
         .sys-toast {
           pointer-events: auto;
-          background: rgba(13, 18, 36, 0.95);
-          border: 1px solid rgba(0, 229, 196, 0.4);
-          box-shadow: 0 0 25px rgba(0, 229, 196, 0.25), inset 0 0 10px rgba(0, 229, 196, 0.05);
-          border-radius: 14px;
-          padding: 14px 18px;
+          background: rgba(13, 18, 36, 0.96);
+          border: 1.5px solid #00e5c4;
+          box-shadow: 0 10px 30px rgba(0, 229, 196, 0.3), inset 0 0 10px rgba(0, 229, 196, 0.05);
+          border-radius: 16px;
+          padding: 16px 22px;
           display: flex;
           align-items: center;
-          gap: 12px;
-          min-width: 300px;
-          max-width: 380px;
-          transform: translateX(120%);
+          gap: 14px;
+          width: 100%;
+          transform: translateY(-40px);
           opacity: 0;
-          transition: all 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .sys-toast.show {
-          transform: translateX(0);
+          transform: translateY(0);
           opacity: 1;
         }
         .sys-toast-icon {
@@ -757,7 +760,7 @@
           flex-grow: 1;
         }
         .sys-toast-title {
-          font-size: 13px;
+          font-size: 13.5px;
           font-weight: 800;
           color: #ffffff;
           margin: 0 0 2px 0;
@@ -776,7 +779,7 @@
       document.head.appendChild(styles);
     }
 
-    // 3. Create and trigger a beautiful floating Toast Notification Popup
+    // 3. Create and trigger a beautiful floating Toast Notification Popup at top center
     let toastContainer = document.querySelector(".sys-toast-container");
     if (!toastContainer) {
       toastContainer = document.createElement("div");
@@ -793,8 +796,8 @@
         </svg>
       </div>
       <div class="sys-toast-content">
-        <h4 class="sys-toast-title">Transmission <span>Successful!</span></h4>
-        <p class="sys-toast-desc">Lead data routed securely to inbox.</p>
+        <h4 class="sys-toast-title">Message <span>Successfully Sent!</span></h4>
+        <p class="sys-toast-desc">Your project inquiry has been securely routed.</p>
       </div>
     `;
     toastContainer.appendChild(toast);
