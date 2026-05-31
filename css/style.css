@@ -2590,7 +2590,7 @@ nav.scrolled {
     border: 1px solid rgba(0, 242, 254, 0.15);
     margin-bottom: 24px;
   }
-  .hero-greeting { order: 2; margin: 0 auto 12px; max-width: 560px; text-align: center; }
+  .hero-greeting { display: none !important; }
   .hero-name { order: 3; margin-bottom: 20px; }
   .hero-roles { order: 4; justify-content: center; margin-bottom: 20px; }
   .hero-bio { order: 5; margin: 0 auto 28px; max-width: 580px; text-align: center; }
@@ -2742,6 +2742,7 @@ nav.scrolled {
     aspect-ratio: 3 / 4 !important; 
     position: relative;
     margin: 0 auto;
+    display: block !important; /* WebKit/Safari fix: disable flex centering on absolute child chips */
   }
   .avatar-card {
     position: absolute;
@@ -2889,6 +2890,7 @@ nav.scrolled {
   
   .avatar-wrap { 
     max-width: 165px !important; 
+    display: block !important; /* WebKit/Safari fix: disable flex centering on absolute child chips */
   }
   .hero-visual { height: 260px !important; }
   .fc-top {
@@ -4365,6 +4367,39 @@ img[src$="null"] {
   .ai-tool-icon {
     width: 40px !important;
     height: 40px !important;
+  }
+}
+
+/* ── HERO ABOUT HEADER ───────────────────────────────────────── */
+.hero-about-header {
+  margin-top: 36px;
+  margin-bottom: 12px;
+  text-align: left;
+  width: 100%;
+}
+.hero-about-eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.hero-about-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.5px;
+}
+
+/* Centered layout for tablet and mobile views */
+@media (max-width: 1024px) {
+  .hero-about-header {
+    text-align: center !important;
+    margin-top: 28px;
+    margin-bottom: 10px;
   }
 }
 
