@@ -616,7 +616,7 @@ nav.scrolled {
   top: 15%;
   right: calc(100% + 30px);
   left: auto;
-  animation: sysFloatTop 5s ease-in-out infinite;
+  animation: sysFloatTop 2s ease-in-out infinite;
 }
 .fc-top::after {
   content: ''; position: absolute; top: 50%; right: -30px;
@@ -628,14 +628,14 @@ nav.scrolled {
   width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
   transform: translateY(-50%); z-index: 13;
   box-shadow: 0 0 8px var(--accent);
-  animation: sysDotBlinkAccent 2s infinite;
+  animation: sysDotBlinkAccent 0.8s infinite;
 }
 
 .fc-bottom {
   bottom: 15%;
   right: calc(100% + 30px);
   left: auto;
-  animation: sysFloatBottom 6s ease-in-out infinite;
+  animation: sysFloatBottom 2.5s ease-in-out infinite;
 }
 .fc-bottom::after {
   content: ''; position: absolute; top: 50%; right: -30px;
@@ -647,7 +647,7 @@ nav.scrolled {
   width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
   transform: translateY(-50%); z-index: 13;
   box-shadow: 0 0 8px var(--accent);
-  animation: sysDotBlinkAccent 2s infinite;
+  animation: sysDotBlinkAccent 0.8s infinite;
 }
 
 .fc-mid {
@@ -655,7 +655,7 @@ nav.scrolled {
   left: calc(100% + 30px);
   right: auto;
   transform: translateY(-50%);
-  animation: sysFloatMid 5.5s ease-in-out infinite;
+  animation: sysFloatMid 2.2s ease-in-out infinite;
 }
 .fc-mid::after {
   content: ''; position: absolute; top: 50%; left: -30px;
@@ -667,7 +667,7 @@ nav.scrolled {
   width: 6px; height: 6px; background: var(--blue); border-radius: 50%;
   transform: translateY(-50%); z-index: 13;
   box-shadow: 0 0 8px var(--blue);
-  animation: sysDotBlinkBlue 2s infinite;
+  animation: sysDotBlinkBlue 0.8s infinite;
 }
 
 /* Animations for Floating Chips & Blinking Border Anchors */
@@ -2775,7 +2775,7 @@ nav.scrolled {
     left: auto !important;
     transform: scale(0.52) !important;
     transform-origin: right center !important;
-    animation: sysFloatTop 5s ease-in-out infinite !important;
+    animation: sysFloatTop 2s ease-in-out infinite !important;
   }
   .fc-bottom {
     bottom: 6% !important;
@@ -2783,7 +2783,7 @@ nav.scrolled {
     left: auto !important;
     transform: scale(0.52) !important;
     transform-origin: right center !important;
-    animation: sysFloatBottom 6s ease-in-out infinite !important;
+    animation: sysFloatBottom 2.5s ease-in-out infinite !important;
   }
   .fc-mid {
     top: 50% !important;
@@ -2791,7 +2791,7 @@ nav.scrolled {
     right: auto !important;
     transform: translateY(-50%) scale(0.52) !important;
     transform-origin: left center !important;
-    animation: sysFloatMid 5.5s ease-in-out infinite !important;
+    animation: sysFloatMid 2.2s ease-in-out infinite !important;
     display: flex !important;
   }
   
